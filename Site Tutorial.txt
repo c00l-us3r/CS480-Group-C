@@ -1,0 +1,9 @@
+Something along the lines of:
+
+Welcome!
+
+You are on the homepage. Here you can see the stock data chart for the SMP 500.
+
+To travel between different stock data we have available, please click one of the stock names at the top of the screen. On each stock you will receive all the financial information needed to know what each stock is all about.
+
+Currently, we have 10 stocks available for you to browse. 
