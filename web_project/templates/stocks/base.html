@@ -1,29 +1,54 @@
-<!doctype html>
+
+<!-- index.html -->
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stock Web Application</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
 
-    <!--Custom CSS Styling Section-->
-    <style>
-        /* Adjust the size of the search button */
-        .btn-outline-success {
-        height: auto; 
-        padding: .375rem .75rem; 
-        }
-        /* Adjust the width of the welcome section */
-        .welcome-section {
-        max-width: 90%; 
-        }  
-    </style>
+     <!-- TradingView Charting Library -->
+     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+
+        <!-- Custom JavaScript for TradingView Chart -->
+        <script>
+          // Function to create TradingView chart
+          function createTradingViewChart() {
+              new TradingView.widget({
+                  "width": 1100,
+                  "height": 625,
+                  "symbol": "SPX",
+                  "timezone": "Etc/UTC", 
+                  "theme": "light",
+                  "style": "1",
+                  "locale": "en",
+                  "enable_publishing": false,
+                  "hide_legend": true,
+                  "withdateranges": true,
+                  "range": "YTD",
+                  "save_image": false,
+                  "calendar": false,
+                  "container_id": "tradingview-chart", // ID of the HTML container for the chart
+              });
+          }
+  
+          // Execute the function when the page is loaded
+          document.addEventListener('DOMContentLoaded', function () {
+              createTradingViewChart();
+          });
+      </script>
 </head>
 
+
 <body>
-  <!-- Bootstrap navbar Just has placeholder companies at this time-->
+    <!-- Additional content, footer, or other body content can be placed here -->
+    <!-- Bootstrap navbar Just has placeholder companies at this time-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
-    <div class="container-fluid">
+      <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -58,13 +83,16 @@
         This is where the content from the child templates will be inserted
     {% endblock %}
   </div>
-              
+
+
   <div class="container-fluid">
     <div class="row">
       <!-- Trading view chart-->
       <div class="col-lg-8">
+
         <div class="container-fluid bg-light p-3 mb-3 border d-flex justify-content-center align-items-center" style="height: 50vh;">
-            <h1 class="text-center">Trading View Chart</h1>
+          <!-- TradingView Chart Container -->
+          <div id="tradingview-chart"></div>
           </div>
           
         <div class="container-fluid bg-light p-3 mb-3 border" style="height: 50vh;">
@@ -190,8 +218,14 @@
         </div>
       </div>
     </div>
+
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <!-- At the end of your <body>, before your custom script tags -->
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+  <!-- Include Lightweight Charts locally -->
+  <script src="/static/web_project/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="/static/web_project/tradingviewHomepage.js"></script>
 </body>
 </html>
