@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stock Web Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!--Custom CSS Styling Section-->
+    <style>
+        /* Adjust the size of the search button */
+        .btn-outline-success {
+        height: auto; 
+        padding: .375rem .75rem; 
+        }
+        /* Adjust the width of the welcome section */
+        .welcome-section {
+        max-width: 90%; 
+        }  
+    </style>
+</head>
+
+<body>
+  <!-- Bootstrap navbar Just has placeholder companies at this time-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav d-flex">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link" href="#">AAPL</a>
+          <a class="nav-link" href="#">AMZN</a>
+          <a class="nav-link" href="#">JNJ</a>
+          <a class="nav-link" href="#">DIS</a>
+          <a class="nav-link" href="#">TSLA</a>
+          <a class="nav-link" href="#">JPM</a>
+          <a class="nav-link" href="#">XOM</a>
+          <a class="nav-link" href="#">KO</a>
+          <a class="nav-link" href="#">PG</a>
+          <a class="nav-link" href="#">BA</a>
+        </div>
+        <form action="{% url 'home' %}" class="d-flex">
+          {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Find Stocks" aria-label="Search" name="ticker">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content area -->
+  <div class="container">
+    <br/>
+    {% block content %}
+        This is where the content from the child templates will be inserted
+    {% endblock %}
+  </div>
+              
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Trading view chart-->
+      <div class="col-lg-8">
+        <div class="container-fluid bg-light p-3 mb-3 border d-flex justify-content-center align-items-center" style="height: 50vh;">
+            <h1 class="text-center">Trading View Chart</h1>
+          </div>
+          
+        <div class="container-fluid bg-light p-3 mb-3 border" style="height: 50vh;">
+
+          <!-- Stock information table formatting subject to change-->
+          <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">  </th>
+                    <th scope="col"> High </th>
+                    <th scope="col"> Low </th>
+                    <th scope="col"> Open </th>
+                    <th scope="col"> Close </th>
+                    <th scope="col"> Volume </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Format rows.-->
+                <tr>
+                    <td> AAPL </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> AMZN </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> JNJ </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> DIS </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> TSLA </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> JPM </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> XOM </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> KO </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> PG </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+                <tr>
+                    <td> BA </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                    <td> # </td>
+                </tr>  
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Welcome section -->
+      <div class="col-lg-4">
+        <div class="container-fluid bg-light p-3 mb-3 border welcome-section" style="height: 100vh;">
+          <!-- Welcome container section -->
+          <h1>Welcome!</h1>
+          <br/>
+          
+            <!--placeholder text-->
+            <p> 
+                Site tutorial coming soon...Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nullam nec vehicula nisi, sed interdum ante. Cras vel justo ut ligula cursus varius. Integer accumsan auctor felis, eget molestie quam efficitur nec. 
+                Sed auctor risus sed libero condimentum, sit amet luctus nulla convallis. Sed vitae felis eu metus finibus scelerisque.
+                Nam pretium euismod dolor, id lacinia elit tempus sed. Nulla facilisi.
+                Sed sit amet lacinia ante. Vivamus non condimentum odio. Integer aliquet ex eu arcu ullamcorper, et faucibus mauris malesuada. 
+                In hac habitasse platea dictumst. Sed quis nulla ligula.
+                Sed venenatis lorem vitae tempor pulvinar. Sed pretium justo a volutpat bibendum.
+                Sed nec ultrices urna. Curabitur consectetur dolor at libero placerat, in mattis urna tempus.
+            </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
