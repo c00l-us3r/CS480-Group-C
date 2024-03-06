@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=c:\Users\isaac\OneDrive\Documents\GitHub\CS480-Group-C\.venv
+set VIRTUAL_ENV=C:\Users\starf\Documents\GitHub\CS480-Group-C\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
