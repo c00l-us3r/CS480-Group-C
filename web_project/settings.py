@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web_project',
+    'stocks', # Added the stocks app to the installed apps
 ]
 
 MIDDLEWARE = [
