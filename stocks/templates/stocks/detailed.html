@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body>
+<body class=" bg-light bg-gradient">
   <container>
     <!-- Bootstrap navbar Just has placeholder companies at this time-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
@@ -47,19 +47,24 @@
 
     <!-- Main content area -->
 
-    <!-- FIRST ROW -->
+    <!-- Row containing View Chart, 52 Week High, Market Capitilization, and About Sections -->
     <div class="container mt-3" style="height: auto;">
       <div class="row">
 
-        <!-- Left Column First Row - Trading View Chart-->
+        <!-- Column contained Chart, 52 Week Section, and Capitilization Section -->
         <div class="col-lg-8">
 
-          <div class="container-fluid bg-light p-3 mb-3 border d-flex justify-content-center align-items-center"
+          <!-- Trading View Chart Box -->
+          <div
+            class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 50vh; border-radius: 10px;">
             <h1 class="text-center">Trading View Chart</h1>
           </div>
 
-          <div class="container-fluid bg-light p-3 mb-3 border d-flex justify-content-center align-items-center" style="height: auto; border-radius: 10px;">
+          <!-- 52 Week High to Latest Quarter Section -->
+          <div
+            class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+            style="height: auto; border-radius: 10px;">
             <div class="row">
               <div class="col-md-6">
 
@@ -159,14 +164,14 @@
             </div>
           </div>
 
-
-          <div class="container-fluid bg-light p-3 mb-3 border justify-content-center align-items-center"
+          <!-- Market Capitilzation to Forward P/E Section -->
+          <div class="container-fluid bg-light p-3 mb-3 justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: auto; border-radius: 10px;">
             <div class="row">
               <div class="col-md-6">
                 <!-- Left Column -->
                 <div class="row">
-                  <!-- 8 rows in left column -->
+                  <!-- 4 rows in left column -->
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Market Capitalization</span>
@@ -235,17 +240,20 @@
           </div>
         </div>
 
-
+        <!-- Column for About Section -->
         <div class="col-lg-4 mb-3" style="display: flex; flex-direction: column; height: 100%; border-radius: 10px;">
-          <div class="container-fluid bg-light p-3 mb-3 border d-flex flex-column justify-content-between align-items-stretch" style="height: 100%; border-radius: 10px;">
-            <!-- Welcome container section -->
+          <div
+            class="container-fluid bg-light p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-50 shadow"
+            style="height: 100%; border-radius: 10px;">
+
+            <!-- Company Name and Ticker -->
             <h1 style="font-display: 1; font-weight: bold;">APPLE</h1>
             <h2 style="font-size: x-large">AAPL $35.29 <span class="text-light-green"
                 style="font-weight: bold;">+2.49%</span></h2>
             <br>
 
+            <!-- Container for Open/Close/High/Low -->
             <div class="col-md-12 mt-lg-3 mb-lg-5">
-              <!-- Column -->
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Open</span>
@@ -279,9 +287,10 @@
             <br>
             <br>
 
+            <!-- About Header -->
             <h2 style="font-size: medium; font-weight: bold;">About</h2>
 
-            <!--placeholder text-->
+            <!--About Section-->
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Nullam nec vehicula nisi, sed interdum ante. Cras vel justo ut ligula cursus varius. Integer accumsan
@@ -376,15 +385,15 @@
     </div>
 
 
-    <!-- Second Row -->
+    <!-- Analyst Target Price and Revenue Per Share section -->
     <div class="container" style="height: auto;">
       <div class="row">
 
-        <!-- Left Column Second Row - Reversed-->
+        <!-- Analyst Target Price Section -->
         <div class="col-lg-4 mb-3">
-          <div class="container-fluid bg-light p-3 border justify-content-center align-items-center"
+          <div class="container-fluid bg-light p-3 justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 100%; border-radius: 10px;">
-            <!-- 8 rows in left column -->
+            <!--6 rows -->
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>Analyst Target Price</span>
@@ -430,15 +439,15 @@
           </div>
         </div>
 
-        <!-- Right Column Second Row - Reversed -->
+        <!-- Revenue Per Share Section -->
         <div class="col-lg-8 mb-3">
-          <div class="container-fluid bg-light p-3 border justify-content-center align-items-center"
+          <div class="container-fluid bg-light p-3 justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 100%; border-radius: 10px;">
             <div class="row">
               <div class="col-md-6">
                 <!-- Left Column -->
                 <div class="row">
-                  <!-- 8 rows in left column -->
+                  <!-- 5 rows in left column -->
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Revenue Per Share (TTM)</span>
