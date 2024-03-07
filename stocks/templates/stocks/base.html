@@ -14,32 +14,7 @@
      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 
 
-        <!-- Custom JavaScript for TradingView Chart -->
-        <script>
-          // Function to create TradingView chart
-          function createTradingViewChart() {
-              new TradingView.widget({
-                  "width": 1000,
-                  "height": 400,
-                  "symbol": "SPY",
-                  "timezone": "Etc/UTC", 
-                  "theme": "light",
-                  "style": "1",
-                  "locale": "en",
-                  "enable_publishing": false,
-                  "hide_legend": true,
-                  "withdateranges": true,
-                  "range": "YTD",
-                  "save_image": false,
-                  "calendar": false,
-                  "container_id": "tradingview-chart", // ID of the HTML container for the chart
-              });
-          }
-  
-          // Execute the function when the page is loaded
-          document.addEventListener('DOMContentLoaded', function () {
-              createTradingViewChart();
-          });
+
       </script>
 </head>
 
@@ -92,7 +67,29 @@
 
         <div class="container-fluid bg-light p-3 mb-3 border d-flex justify-content-center align-items-center" style="height: 50vh;">
           <!-- TradingView Chart Container -->
-          <div id="tradingview-chart"></div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="height:100%;width:100%">
+  <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+  {
+  "autosize": true,
+  "symbol": "AMEX:SPY",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "enable_publishing": false,
+  "hide_top_toolbar": true,
+  "withdateranges": true,
+  "save_image": false,
+  "calendar": false,
+  "support_host": "https://www.tradingview.com"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
           </div>
           
         <div class="container-fluid bg-light p-3 mb-3 border" style="height: 50vh;">
@@ -200,21 +197,23 @@
       <div class="col-lg-4">
         <div class="container-fluid bg-light p-3 mb-3 border welcome-section" style="height: 100vh;">
           <!-- Welcome container section -->
-          <h1>Welcome!</h1>
-          <br/>
-          
-            <!--placeholder text-->
-            <p> 
-                Site tutorial coming soon...Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nullam nec vehicula nisi, sed interdum ante. Cras vel justo ut ligula cursus varius. Integer accumsan auctor felis, eget molestie quam efficitur nec. 
-                Sed auctor risus sed libero condimentum, sit amet luctus nulla convallis. Sed vitae felis eu metus finibus scelerisque.
-                Nam pretium euismod dolor, id lacinia elit tempus sed. Nulla facilisi.
-                Sed sit amet lacinia ante. Vivamus non condimentum odio. Integer aliquet ex eu arcu ullamcorper, et faucibus mauris malesuada. 
-                In hac habitasse platea dictumst. Sed quis nulla ligula.
-                Sed venenatis lorem vitae tempor pulvinar. Sed pretium justo a volutpat bibendum.
-                Sed nec ultrices urna. Curabitur consectetur dolor at libero placerat, in mattis urna tempus.
-            </p>
-
+          <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+  {
+  "feedMode": "all_symbols",
+  "isTransparent": false,
+  "displayMode": "regular",
+  "width": "100%",
+  "height": "100%",
+  "colorTheme": "light",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
         </div>
       </div>
     </div>
