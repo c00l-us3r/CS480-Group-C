@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    max-width: 75vw; /* Set maximum width to 80% of viewport width */
+    margin: auto; /* Center the container horizontally */
+}
+
+.container-custom {
+    background-color: #f8f9fa; /* light grey */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* slight shadow effect */
+  }
+
+.left-block {
+    flex: 2;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+.right-block {
+    flex: 1;
+    background-color: #e0e0e0;
+    padding: 20px;
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-block, .right-block {
+        flex: 1;
+    }
+}
+
+.text-light-green {
+    color: #8bc34a; /* Light green color code */
+}
+
+.font-size-16 span {
+    font-size: 50px; /* Adjust the font size as needed */
+}
