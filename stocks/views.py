@@ -5,5 +5,7 @@ def home(request):
     return render(request, 'stocks/base.html', {}), # Render the starting base.html page from the stocks app
 
 
+
 def detailed(request):
-    return render(request, 'stocks/detailed.html', {}), # Render the detailed.html page from the stocks app
+    # Your logic here
+    return render(request, 'stocks/detailed.html')

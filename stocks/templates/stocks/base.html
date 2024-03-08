@@ -31,16 +31,17 @@
       <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
         <div class="navbar-nav d-flex">
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">detailed page</a>
-          <a class="nav-link" href="#">AMZN</a>
-          <a class="nav-link" href="#">JNJ</a>
-          <a class="nav-link" href="#">DIS</a>
-          <a class="nav-link" href="#">TSLA</a>
-          <a class="nav-link" href="#">JPM</a>
-          <a class="nav-link" href="#">XOM</a>
-          <a class="nav-link" href="#">KO</a>
-          <a class="nav-link" href="#">PG</a>
-          <a class="nav-link" href="#">BA</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">XOM</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">CVX</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">NVDA</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">WMT</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">KO</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">PFE</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">VZ</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">HD</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">ZG</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">META</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">GOOGL</a>
         </div>
         <form action="{% url 'home' %}" class="d-flex">
           {% csrf_token %}
