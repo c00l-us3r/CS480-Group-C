@@ -9,7 +9,7 @@
     <title>Stock Web Application</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/styles.css">
-
+    <link rel="stylesheet" type="text/css" href="stocks/detailed.css" />
      <!-- TradingView Charting Library -->
      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 
@@ -19,10 +19,11 @@
 </head>
 
 
-<body>
+<body class=" bg-light bg-gradient">
+  <container>
     <!-- Additional content, footer, or other body content can be placed here -->
     <!-- Bootstrap navbar Just has placeholder companies at this time-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
       <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,23 +53,21 @@
     </div>
   </nav>
 
-  <!-- Main content area -->
-  <div class="container">
-    <br/>
-    {% block content %}
-        This is where the content from the child templates will be inserted
-    {% endblock %}
-  </div>
+<!-- Main content area -->
 
+    <!-- Row containing View Chart, 52 Week High, Market Capitilization, and About Sections -->
+    <div class="container mt-3" style="height: auto;">
+      <div class="row">
 
-  <div class="container-fluid">
-    <div class="row">
-      <!-- Trading view chart-->
-      <div class="col-lg-8">
+        <!-- Column contained Chart, 52 Week Section, and Capitilization Section -->
+        <div class="col-lg-8">
 
-        <div class="container-fluid bg-light p-3 mb-3 border d-flex justify-content-center align-items-center" style="height: 50vh;">
-          <!-- TradingView Chart Container -->
-<!-- TradingView Widget BEGIN -->
+          <!-- Trading View Chart Box -->
+          <div
+            class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+            style="height: 50vh; border-radius: 10px;">
+
+            <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container" style="height:100%;width:100%">
   <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
   <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
@@ -93,7 +92,8 @@
 <!-- TradingView Widget END -->
           </div>
           
-        <div class="container-fluid bg-light p-3 mb-3 border" style="height: 50vh;">
+        <div             class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+        style="height: 50vh; border-radius: 10px;">
 
           <!-- Stock information table formatting subject to change-->
           <table class="table table-bordered table-striped">
@@ -196,7 +196,7 @@
 
       <!-- Welcome section -->
       <div class="col-lg-4">
-        <div class="container-fluid bg-light p-3 mb-3 border welcome-section" style="height: 100vh;">
+        <div class="container bg-light p-3 mb-3 border container" style="height: 100vh;">
           <!-- Welcome container section -->
           <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
@@ -220,6 +220,7 @@
     </div>
 
   </div>
+</container>
 
   <!-- At the end of your <body>, before your custom script tags -->
   <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
