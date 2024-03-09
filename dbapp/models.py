@@ -27,9 +27,10 @@ class FinancialFundamentalData(models.Model):
     peration = models.CharField(db_column='PERation', max_length=10)  # Field name made lowercase.
     pegration = models.CharField(db_column='PEGRation', max_length=10)  # Field name made lowercase.
     bookvalue = models.CharField(db_column='BookValue', max_length=10)  # Field name made lowercase.
+    dividendpershare = models.CharField(db_column='DividendPerShare', max_length=45)  # Field name made lowercase.
     divdendyield = models.CharField(db_column='DivdendYield', max_length=10)  # Field name made lowercase.
     eps = models.CharField(db_column='EPS', max_length=10)  # Field name made lowercase.
-    revenuepersarettm = models.CharField(db_column='RevenuePerSareTTM', max_length=10)  # Field name made lowercase.
+    revenuepersharettm = models.CharField(db_column='RevenuePerShareTTM', max_length=10)  # Field name made lowercase.
     profitmargin = models.CharField(db_column='ProfitMargin', max_length=10)  # Field name made lowercase.
     operatingmarginttm = models.CharField(db_column='OperatingMarginTTM', max_length=10)  # Field name made lowercase.
     returnonassetsttm = models.CharField(db_column='ReturnOnAssetsTTM', max_length=10)  # Field name made lowercase.
@@ -48,6 +49,7 @@ class FinancialFundamentalData(models.Model):
     trailingpe = models.CharField(db_column='TrailingPE', max_length=10)  # Field name made lowercase.
     forwardpe = models.CharField(db_column='ForwardPE', max_length=10)  # Field name made lowercase.
     pricetosalesrationttm = models.CharField(db_column='PriceToSalesRationTTM', max_length=10)  # Field name made lowercase.
+    pricetobookratio = models.CharField(db_column='PriceToBookRatio', max_length=10)  # Field name made lowercase.
     evtorevenue = models.CharField(db_column='EVToRevenue', max_length=10)  # Field name made lowercase.
     evtoebitda = models.CharField(db_column='EVToEBITDA', max_length=10)  # Field name made lowercase.
     beta = models.CharField(db_column='Beta', max_length=10)  # Field name made lowercase.
