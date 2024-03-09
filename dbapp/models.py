@@ -64,6 +64,7 @@ class FinancialFundamentalData(models.Model):
     class Meta:
         managed = False
         db_table = 'financial_fundamental_data'
+        app_label = "dbapp"
 
 
 class LastPull(models.Model):
@@ -74,6 +75,7 @@ class LastPull(models.Model):
         managed = False
         db_table = 'last_pull'
         unique_together = (('date', 'time'),)
+        app_label = "dbapp"
 
 
 class PricingData(models.Model):
@@ -87,3 +89,4 @@ class PricingData(models.Model):
     class Meta:
         managed = False
         db_table = 'pricing_data'
+        app_label="dbapp"

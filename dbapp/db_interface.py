@@ -1,5 +1,9 @@
 # Uses av_interface.py functions to store and pull information from the database.
 
+import django
+from django.conf import settings
+settings.configure()
+django.setup()
 from av_interface import getFinancialFundamentalData as getFFD
 from av_interface import getPricingData as getPD
 from models import FinancialFundamentalData as FFD
@@ -37,7 +41,4 @@ def updateDB(symbol, apikey):
     #store PD
     pd = PD(symbol=FDDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
     pd.save()
-
-#def pullFromDB(symbol):
-
 
