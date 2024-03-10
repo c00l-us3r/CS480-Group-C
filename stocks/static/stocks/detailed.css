@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: row;
     height: 100vh;
-    max-width: 75vw; /* Set maximum width to 80% of viewport width */
+    max-width: 80vw; /* Set maximum width to 80% of viewport width */
     margin: auto; /* Center the container horizontally */
 }
 
