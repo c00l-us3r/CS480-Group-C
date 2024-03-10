@@ -16,6 +16,7 @@
 
 
 
+
       </script>
       
 
@@ -57,7 +58,7 @@
           </div>
         </nav>
 
-<!-- Main content area -->
+ <!-- Main content area -->
 
     <!-- Row containing View Chart, 52 Week High, Market Capitilization, and About Sections -->
     <div class="container mt-3" style="height: auto;">
@@ -68,270 +69,176 @@
 
           <!-- Trading View Chart Box -->
           <div
-            class="container bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+            class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 50vh; border-radius: 10px;">
 
             <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container" style="height:100%;width:100%">
-  <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-  {
-  "autosize": true,
-  "symbol": "AMEX:SPY",
-  "interval": "D",
-  "timezone": "Etc/UTC",
-  "theme": "light",
-  "style": "1",
-  "locale": "en",
-  "enable_publishing": false,
-  "hide_top_toolbar": true,
-  "withdateranges": true,
-  "save_image": false,
-  "calendar": false,
-  "support_host": "https://www.tradingview.com"
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->
+            <div class="tradingview-widget-container" style="height:100%;width:100%">
+              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                {
+                "autosize": true,
+                "symbol": "AMEX:SPY",
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "light",
+                "style": "1",
+                "locale": "en",
+                "enable_publishing": false,
+                "hide_top_toolbar": true,
+                "withdateranges": true,
+                "save_image": false,
+                "calendar": false,
+                "support_host": "https://www.tradingview.com"
+                }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
           </div>
 
           <!-- 52 Week High to Latest Quarter Section -->
           <div
-            class="container bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+            class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: auto; border-radius: 10px;">
             <div class="row">
-              <div class="col-md-6">
+
+              <!-- Stock information table formatting subject to change-->
+              <table class=" table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">  </th>
+                        <th scope="col"> High </th>
+                        <th scope="col"> Low </th>
+                        <th scope="col"> Open </th>
+                        <th scope="col"> Close </th>
+                        <th scope="col"> Volume </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Format rows.-->
+                    <tr>
+                        <td> AAPL </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> AMZN </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> JNJ </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> DIS </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> TSLA </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> JPM </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> XOM </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> KO </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> PG </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                    <tr>
+                        <td> BA </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                        <td> # </td>
+                    </tr>  
+                </tbody>
+              </table>
+            </div> <!-- closing row -->
 
 
-                <!-- Left Column -->
-                <div class="row">
-                  <!-- 8 rows in left column -->
-                  <div class="col-md-12">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span>52 Week High</span>
-                      <span>December</span>
-                    </div>
-                    <hr class="my-1">
-                  </div>
-                  <div class="col-md-12">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span>52 Week Low</span>
-                      <span>2023-12-31</span>
-                    </div>
-                    <hr class="my-1">
-                  </div>
-                  <div class="col-md-12">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span>50 Day Average</span>
-                      <span>5.2 M</span>
-                    </div>
-                    <hr class="my-1">
-                  </div>
-                  <div class="col-md-12">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span>200 Day Average</span>
-                      <span>9131190000</span>
-                    </div>
-                    <hr class="my-1">
-                  </div>
-                  <div class="col-md-12">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span>Volume</span>
-                      <span>5.1 M</span>
-                    </div>
-                    <hr class="my-1">
-                  </div>
-                  <div class="col-md-12">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span>Shares Outstanding</span>
-                      <span>9131190000</span>
-                    </div>
-                    <hr class="my-1">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <!-- Right Column -->
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span>Dividend Per Share</span>
-                    <span>$0.65</span>
-                  </div>
-                  <hr class="my-1">
-                </div>
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span>Dividend Yield</span>
-                    <span>$0.05</span>
-                  </div>
-                  <hr class="my-1">
-                </div>
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span>Dividend Date</span>
-                    <span>2024-06-31</span>
-                  </div>
-                  <hr class="my-1">
-                </div>
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span>Ex Dividend Date</span>
-                    <span>2024-07-01</span>
-                  </div>
-                  <hr class="my-1">
-                </div>
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span>Fiscal Year End</span>
-                    <span>December</span>
-                  </div>
-                  <hr class="my-1">
-                </div>
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span>Latest Quarter</span>
-                    <span>2023-12-31</span>
-                  </div>
-                  <hr class="my-1">
-                </div>
-              </div>
-            </div>
-          </div>
+          </div> <!-- closing class -->
+
           
-        <div             class="container bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
-        style="height: 50vh; border-radius: 10px;">
+        </div> <!-- closing column -->
 
-          <!-- Stock information table formatting subject to change-->
-          <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">  </th>
-                    <th scope="col"> High </th>
-                    <th scope="col"> Low </th>
-                    <th scope="col"> Open </th>
-                    <th scope="col"> Close </th>
-                    <th scope="col"> Volume </th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--Format rows.-->
-                <tr>
-                    <td> AAPL </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> AMZN </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> JNJ </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> DIS </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> TSLA </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> JPM </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> XOM </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> KO </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> PG </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-                <tr>
-                    <td> BA </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                    <td> # </td>
-                </tr>  
-            </tbody>
-          </table>
+                <!-- Column for About Section -->
+        <div class="col-lg-4 mb-3" style="display: flex; flex-direction: column; height: 100%; border-radius: 10px;">
+          <div class="container-fluid bg-light p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-50 shadow" style="height: 100%; border-radius: 10px;">
+            <!-- Welcome section -->
+            <!-- Welcome container section -->
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                {
+                "feedMode": "all_symbols",
+                "isTransparent": false,
+                "displayMode": "regular",
+                "width": "100%",
+                "height": "100%",
+                "colorTheme": "light",
+                "locale": "en"
+                }
+                </script>
+            </div> <!-- TradingView Widget END -->
+        
+ 
+          </div>
         </div>
       </div>
-
-      <!-- Welcome section -->
-      <div class="col-lg-4">
-        <div class="container bg-light p-3 mb-3 border container" style="height: 100vh;">
-          <!-- Welcome container section -->
-          <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-  {
-  "feedMode": "all_symbols",
-  "isTransparent": false,
-  "displayMode": "regular",
-  "width": "100%",
-  "height": "100%",
-  "colorTheme": "light",
-  "locale": "en"
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->
-        </div>
-      </div>
-    </div>
-
+    
   </div>
 </container>
 
   <!-- At the end of your <body>, before your custom script tags -->
   <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
   <!-- Include Lightweight Charts locally -->
   <script src="/static/web_project/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
   <script src="/static/web_project/tradingviewHomepage.js"></script>
