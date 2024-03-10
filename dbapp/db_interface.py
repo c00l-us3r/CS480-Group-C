@@ -142,8 +142,6 @@ def pullFFDfromDB(inputSymbol):
 #return a list of strings from the databse for PD
 #Here are the indexes:
 """
-Returns array of data from the TIME_SERIES_INTRADAY Alpha Vantage Endpoint.
-Indexes are as follows:
 0 = Open
 1 = High
 2 = Low
