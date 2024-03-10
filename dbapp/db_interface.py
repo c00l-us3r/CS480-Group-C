@@ -70,3 +70,93 @@ def updateDB(symbol, apikey):
     else:
         pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
         pd.save()
+
+#return a list of strings from the databse for FFD
+#Here are the indexes:
+"""
+0 = Symbol
+1 = AssetType
+2 = Name
+3 = Description
+4 = CIK
+5 = Exchange
+6 = Currency
+7 = Country
+8 = Sector
+9 = Industry
+10 = Address
+11 = FiscalYearEnd
+12 = LatestQuarter
+13 = MarketCapitalization
+14 = EBITDA
+15 = PERatio
+16 = PEGRatio
+17 = BookValue
+18 = DividendPerShare
+19 = DividendYield
+20 = EPS
+21 = RevenuePerShareTTM
+22 = ProfitMargin
+23 = OperatingMarginTTM
+24 = ReturnOnAssetsTTM
+25 = ReturnOnEquityTTM
+26 = RevenueTTM
+27 = GrossProfitTTM
+28 = DilutedEPSTTM
+29 = QuarterlyEarningsGrowthYOY
+30 = QuarterlyRevenueGrowthYOY
+31 = AnalystTargetPrice
+32 = AnalystRatingStrongBuy
+33 = AnalystRatingBuy
+34 = AnalystRatingHold
+35 = AnalystRatingSell
+36 = AnalystRatingStrongSell
+37 = TrailingPE
+38 = ForwardPE
+39 = PriceToSalesRatioTTM
+40 = PriceToBookRatio
+41 = EVToRevenue
+42 = EVToEBITDA
+43 = Beta
+44 = 52WeekHigh
+45 = 52WeekLow
+46 = 50DayMovingAverage
+47 = 200DayMovingAverage
+48 = SharesOutstanding
+49 = DividendDate
+50 = ExDividendDate
+"""  
+def pullFFDfromDB(inputSymbol):
+    query = FFD.objects.get(symbol=inputSymbol)
+    list = [query.symbol, query.assettype, query.name, query.desc, query.cik, query.exchange, query.currency, query.country, query.sector, query.industry,
+            query.address, query.fiscalyearend, query.latestquarter, query.marketcapitalization, query.ebitda, query.peration, query.pegration, 
+            query.bookvalue, query.dividendpershare, query.dividendyield, query.eps, query.revenuepersharettm, query.profitmargin, query.operatingmarginttm, 
+            query.returnonassetsttm, query.returnonequityttm, query.revenuettm, query.grossprofitttm, query.dilutedepsttm, query.quarterlyearningsgrowthyoy,
+            query.quarterlyrevenuegrowthyoy, query.analysttargetprice, query.analystratingstrongbuy, query.analystratingbuy, query.analystratinghold, 
+            query.analystratingsell, query.analystratingstrongsell, query.trailingpe, query.forwardpe, query.pricetosalesrationttm,
+            query.pricetobookratio, query.evtorevenue, query.evtoebitda, query.beta, query.number_52weekhigh, query.number_52weeklow, query.number_50daymovingaverage,
+            query.number_200daymovingaverage, query.sharesoutstanding, query.dividenddate, query.exdividenddate
+            ]
+    return list
+
+#return a list of strings from the databse for PD
+#Here are the indexes:
+"""
+Returns array of data from the TIME_SERIES_INTRADAY Alpha Vantage Endpoint.
+Indexes are as follows:
+0 = Open
+1 = High
+2 = Low
+3 = Close
+4 = Volume
+"""
+def pullPDfromDB(inputSymbol):
+    query = PD.objects.get(symbol=inputSymbol)
+    list = [query.open, query.high, query.low, query.close, query.volume]
+    return list
+
+#return a list with the last pull from AlphaVantage
+def pullLPfromDB():
+    query = LP.objects.get()
+    list = [query.date, query.time]
+    return list
