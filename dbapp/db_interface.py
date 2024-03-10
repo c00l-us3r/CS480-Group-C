@@ -2,7 +2,16 @@
 
 import django
 from django.conf import settings
-settings.configure()
+settings.configure(DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'stock_data',   #name of the database
+        'USER': 'root',         #change to your username
+        'PASSWORD': '2003',     #change to your password
+        'HOST': 'localhost',    #change to your host
+        'PORT': '3306',         #change to your port
+    }
+})
 django.setup()
 from av_interface import getFinancialFundamentalData as getFFD
 from av_interface import getPricingData as getPD
@@ -14,7 +23,7 @@ from datetime import datetime
 
 def updateDB(symbol, apikey):
     #pull data
-    FDDtokens = getFFD(symbol, apikey)
+    FFDtokens = getFFD(symbol, apikey)
     PDtokens = getPD(symbol, apikey)
     currDay = today.today()
     currTime = datetime.now()
@@ -25,20 +34,39 @@ def updateDB(symbol, apikey):
     lp.save()
 
     #store FFD
-    ffd = FFD(symbol=FDDtokens[0], assettype=FDDtokens[1], name=FDDtokens[2], desc=FDDtokens[3], cik=FDDtokens[4],
-              exchange=FDDtokens[5], currency=FDDtokens[6], country=FDDtokens[7], sector=FDDtokens[8], industry=FDDtokens[9],
-              address=FDDtokens[10], fiscalyearend=FDDtokens[11], latestquarter=FDDtokens[12], marketcapitalization=FDDtokens[13], ebitda=FDDtokens[14],
-              peration=FDDtokens[15], pegration=FDDtokens[16], bookvalue=FDDtokens[17], dividendpershare=FDDtokens[18], dividendyield=FDDtokens[19],
-              eps=FDDtokens[20], revenuepersharettm=FDDtokens[21], profitmargin=FDDtokens[22], operatingmarginttm=FDDtokens[23], returnonassetsttm=FDDtokens[24],
-              returnonequityttm=FDDtokens[25], revenuettm=FDDtokens[26], grossprofitttm=FDDtokens[27], dilutedepsttm=FDDtokens[28], quarterlyearningsgrowthyoy=FDDtokens[29],
-              quarterlyrevenuegrowthyoy=FDDtokens[30], analysttargetprice=FDDtokens[31], analystratingstrongbuy=FDDtokens[32], analystratingbuy=FDDtokens[33], analystratinghold=FDDtokens[34],
-              analystratingsell=FDDtokens[35], analystratingstrongsell=FDDtokens[36], trailingpe=FDDtokens[37], forwardpe=FDDtokens[38], pricetosalesration=FDDtokens[39],
-              pricetobookratio=FDDtokens[40], evtorevenue=FDDtokens[41], evtoebitda=FDDtokens[42], beta=FDDtokens[43], number_52weekhigh=FDDtokens[44],
-              number_52weeklow=FDDtokens[45], number_50daymovingaverage=FDDtokens[46], number_200daymovingaverage=FDDtokens[47], sharesoutstanding=FDDtokens[48], devidenddate=FDDtokens[49],
-              exdivdenddate=FDDtokens[50])
-    ffd.save()
+    if FFD.objects.filter(symbol=FFDtokens[0]).exists:
+        FFD.objects.filter(symbol=FFDtokens[0]).update(
+            assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
+            exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
+            address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
+            peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], dividendyield=FFDtokens[19],
+            eps=FFDtokens[20], revenuepersharettm=FFDtokens[21], profitmargin=FFDtokens[22], operatingmarginttm=FFDtokens[23], returnonassetsttm=FFDtokens[24],
+            returnonequityttm=FFDtokens[25], revenuettm=FFDtokens[26], grossprofitttm=FFDtokens[27], dilutedepsttm=FFDtokens[28], quarterlyearningsgrowthyoy=FFDtokens[29],
+            quarterlyrevenuegrowthyoy=FFDtokens[30], analysttargetprice=FFDtokens[31], analystratingstrongbuy=FFDtokens[32], analystratingbuy=FFDtokens[33], analystratinghold=FFDtokens[34],
+            analystratingsell=FFDtokens[35], analystratingstrongsell=FFDtokens[36], trailingpe=FFDtokens[37], forwardpe=FFDtokens[38], pricetosalesrationttm=FFDtokens[39],
+            pricetobookratio=FFDtokens[40], evtorevenue=FFDtokens[41], evtoebitda=FFDtokens[42], beta=FFDtokens[43], number_52weekhigh=FFDtokens[44],
+            number_52weeklow=FFDtokens[45], number_50daymovingaverage=FFDtokens[46], number_200daymovingaverage=FFDtokens[47], sharesoutstanding=FFDtokens[48], dividenddate=FFDtokens[49],
+            exdividenddate=FFDtokens[50]
+        )
+    else:
+        ffd = FFD(symbol=FFDtokens[0], assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
+                exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
+                address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
+                peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], dividendyield=FFDtokens[19],
+                eps=FFDtokens[20], revenuepersharettm=FFDtokens[21], profitmargin=FFDtokens[22], operatingmarginttm=FFDtokens[23], returnonassetsttm=FFDtokens[24],
+                returnonequityttm=FFDtokens[25], revenuettm=FFDtokens[26], grossprofitttm=FFDtokens[27], dilutedepsttm=FFDtokens[28], quarterlyearningsgrowthyoy=FFDtokens[29],
+                quarterlyrevenuegrowthyoy=FFDtokens[30], analysttargetprice=FFDtokens[31], analystratingstrongbuy=FFDtokens[32], analystratingbuy=FFDtokens[33], analystratinghold=FFDtokens[34],
+                analystratingsell=FFDtokens[35], analystratingstrongsell=FFDtokens[36], trailingpe=FFDtokens[37], forwardpe=FFDtokens[38], pricetosalesrationttm=FFDtokens[39],
+                pricetobookratio=FFDtokens[40], evtorevenue=FFDtokens[41], evtoebitda=FFDtokens[42], beta=FFDtokens[43], number_52weekhigh=FFDtokens[44],
+                number_52weeklow=FFDtokens[45], number_50daymovingaverage=FFDtokens[46], number_200daymovingaverage=FFDtokens[47], sharesoutstanding=FFDtokens[48], dividenddate=FFDtokens[49],
+                exdividenddate=FFDtokens[50])
+        ffd.save()
 
     #store PD
-    pd = PD(symbol=FDDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
-    pd.save()
-
+    if PD.objects.filter(symbol=FFDtokens[0]).exists:
+        PD.objects.filter(symbol=FFDtokens[0]).update(
+            open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4]
+        )
+    else:
+        pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
+        pd.save()
