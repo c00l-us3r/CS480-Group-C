@@ -47,3 +47,31 @@ body {
 .font-size-16 span {
   font-size: 50px; /* Adjust the font size as needed */
 }
+
+table {
+  width: 100%;
+  table-layout: fixed; /* Set table layout to fixed */
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px; /* Adjust padding for better spacing */
+  text-align: left;
+  border: 1px solid #dddddd;
+  width: 25%; /* Divide the table equally among the columns */
+}
+
+/* Style to remove vertical borders */
+.table-bordered tbody tr td,
+.table-bordered tbody tr th,
+.table-bordered thead tr th,
+.table-bordered thead tr td {
+  border-left: none;
+  border-right: none;
+}
+
+/* Optional: Add bottom border to last row */
+.table-bordered tbody tr:last-child td,
+.table-bordered tbody tr:last-child th {
+  border-bottom: 1px solid #dee2e6;
+}
