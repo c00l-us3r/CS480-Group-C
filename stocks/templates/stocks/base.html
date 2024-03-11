@@ -16,35 +16,29 @@
   <container>
     <!-- Bootstrap navbar Just has placeholder companies at this time-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-          <div class="navbar-nav d-flex">
-            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">XOM</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">CVX</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">NVDA</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">WMT</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">KO</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">PFE</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">VZ</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">HD</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">ZG</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">META</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">GOOGL</a>
-          </div>
-          <form action="{% url 'home' %}" class="d-flex">
-            {% csrf_token %}
-            <input class="form-control me-2" type="search" placeholder="Find Stocks" aria-label="Search" name="ticker">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- Left-aligned link -->
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="font-size: x-large;"><i class="bi bi-house-fill"></i></a>
+        </div>
+        
+        <!-- Center-aligned links -->
+        <div class="navbar-nav mx-auto">
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">XOM</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">CVX</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">NVDA</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">WMT</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">KO</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">PFE</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">VZ</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">HD</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">ZG</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">META</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">GOOGL</a>
         </div>
       </div>
     </nav>
+    
 
     <!-- Main content area -->
 
@@ -57,7 +51,7 @@
 
           <!-- Trading View Chart Box -->
           <div
-            class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+            class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-90 shadow"
             style="height: 50vh; border-radius: 10px;">
 
             <!-- TradingView Widget BEGIN -->
@@ -89,7 +83,7 @@
 
           <!-- 52 Week High to Latest Quarter Section -->
           <div
-            class="container-fluid bg-light p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+            class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-90 shadow"
             style="height: auto; border-radius: 10px;">
             <div class="row">
               <div class="table-responsive">
@@ -108,7 +102,7 @@
                   <tbody>
                     <!--Format rows.-->
                     <tr>
-                      <th scope="row">XOM</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">XOM</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -116,7 +110,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">CVX</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">CVX</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -124,7 +118,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">NVDA</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">NVDA</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -132,7 +126,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">WMT</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">WMT</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -140,7 +134,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">KO</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">KO</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -148,7 +142,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">PFE</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">PFE</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -156,7 +150,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">VZ</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">VZ</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -164,7 +158,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">HD</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">HD</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -172,7 +166,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">ZG</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">ZG</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -180,7 +174,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">META</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">META</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -188,7 +182,7 @@
                       <td>$$$</td>
                     </tr>
                     <tr>
-                      <th scope="row">GOOGL</th>
+                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">GOOGL</a></th>
                       <td>$$$</td>
                       <td>$$$</td>
                       <td>$$$</td>
@@ -206,7 +200,7 @@
         <!-- Column for About Section -->
         <div class="col-lg-4 mb-3" style="display: flex; flex-direction: column; height: 100%; border-radius: 10px;">
           <div
-            class="container-fluid bg-light p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-50 shadow"
+            class="container-fluid bg-white p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-90 shadow"
             style="height: 100%; border-radius: 10px;">
 
             <!-- TradingView Widget BEGIN -->

@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #212529, white); /* Gradient from #212529 at the top to white at the bottom */
 }
 
 .container {
@@ -74,4 +75,19 @@ th, td {
 .table-bordered tbody tr:last-child td,
 .table-bordered tbody tr:last-child th {
   border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-nav {
+  display: flex;
+}
+
+.navbar-nav .nav-link {
+  border-right: 1px solid #798896; /* Add a vertical border to the right of each link */
+  padding-right: 20px; /* Increase padding between the links */
+  padding-left: 20px; /* Increase padding on the left side of each link */
+}
+
+/* Remove the border from the last link */
+.navbar-nav .nav-link:last-child {
+  border-right: none;
 }
