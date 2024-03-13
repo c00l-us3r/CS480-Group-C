@@ -24,17 +24,17 @@
         
         <!-- Center-aligned links -->
         <div class="navbar-nav mx-auto">
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">XOM</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">CVX</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">NVDA</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">WMT</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">KO</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">PFE</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">VZ</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">HD</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">ZG</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">META</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">GOOGL</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="XOM" style="font-size: large;">XOM</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="CVX" style="font-size: large;">CVX</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="NVDA" style="font-size: large;">NVDA</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="WMT" style="font-size: large;">WMT</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="KO" style="font-size: large;">KO</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="PFE" style="font-size: large;">PFE</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="VZ" style="font-size: large;">VZ</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="HD" style="font-size: large;">HD</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="ZG" style="font-size: large;">ZG</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="META" style="font-size: large;">META</a>
+          <a class="nav-link active" aria-current="page" href="#" data-symbol="GOOGL" style="font-size: large;">GOOGL</a>
         </div>
       </div>
     </nav>
@@ -50,33 +50,73 @@
         <div class="col-lg-8">
 
           <!-- Trading View Chart Box -->
-          <div
-            class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-90 shadow"
+          <div id ="tradingview-chart"
+            class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 50vh; border-radius: 10px;">
 
             <!-- TradingView Widget BEGIN -->
             <div class="tradingview-widget-container" style="height:100%;width:100%">
               <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow"
-                  target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-              <script type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                {
-                  "autosize": true,
-                  "symbol": "AMEX:SPY",
-                  "interval": "D",
-                  "timezone": "Etc/UTC",
-                  "theme": "light",
-                  "style": "1",
-                  "locale": "en",
-                  "enable_publishing": false,
-                  "hide_top_toolbar": true,
-                  "withdateranges": true,
-                  "save_image": false,
-                  "calendar": false,
-                  "support_host": "https://www.tradingview.com"
+
+              <script>
+                let tvScriptLoadingPromise;
+            
+                function TradingViewWidget(chartSymbol, containerId) {
+                    if (!tvScriptLoadingPromise) {
+                        tvScriptLoadingPromise = new Promise((resolve) => {
+                            const script = document.createElement("script");
+                            script.id = "tradingview-widget-loading-script";
+                            script.src = "https://s3.tradingview.com/tv.js";
+                            script.type = "text/javascript";
+                            script.onload = resolve;
+            
+                            document.head.appendChild(script);
+                        });
+                    }
+            
+                    tvScriptLoadingPromise.then(() => {
+                        if (document.getElementById(containerId) && window.TradingView) {
+                            new window.TradingView.widget({
+                                "autosize": true,
+                                "symbol": chartSymbol, // Initial symbol value
+                                "interval": "D",
+                                "timezone": "Etc/UTC",
+                                "theme": "light",
+                                "style": "1",
+                                "locale": "en",
+                                "enable_publishing": false,
+                                "hide_top_toolbar": true,
+                                "withdateranges": true,
+                                "save_image": false,
+                                "calendar": false,
+                                allow_symbol_change: true,
+                                container_id: containerId // Updated to use the provided container ID
+                            });
+                        }
+                    });
                 }
-              </script>
+            
+                function changeSymbol(symbol) {
+                    document.getElementById("tradingview-chart").innerHTML = "";
+                    TradingViewWidget(symbol, "tradingview-chart");
+                }
+            
+                // Call changeSymbol() with the appropriate stock symbol when a link is clicked
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function(event) {
+                        //event.preventDefault(); // Prevent the default action of following the link
+                        const symbol = this.getAttribute('data-symbol');
+                        changeSymbol(symbol);
+                    });
+                });
+            
+                // Load the chart with a default symbol when the page is initially loaded
+                window.onload = function() {
+                    // Choose a default symbol here (e.g., "AAPL" for Apple)
+                    defaultSymbol = "SPY";
+                    changeSymbol(defaultSymbol);
+                };
+            </script>
             </div>
             <!-- TradingView Widget END -->
           </div>

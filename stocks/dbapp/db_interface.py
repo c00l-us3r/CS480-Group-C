@@ -158,3 +158,4 @@ def pullLPfromDB():
     query = LP.objects.get()
     list = [query.date, query.time]
     return list
+
