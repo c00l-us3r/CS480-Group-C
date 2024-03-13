@@ -5,4 +5,6 @@ urlpatterns = [
     # Import the home view for the stocks app
     path('', views.home, name="home"),
     path('detailed/', views.detailed, name="detailed"),
+    path('tradingview-widget/', views.test, name='test'),
+
 ]

@@ -9,3 +9,7 @@ def home(request):
 def detailed(request):
     # Your logic here
     return render(request, 'stocks/detailed.html')
+
+
+def test(request):
+    return render(request, 'stocks/test.html')
