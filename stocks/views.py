@@ -89,7 +89,7 @@ def detailed(request, symbol):
                   '52WeekLow': overview_data.get('52WeekLow', 'N/A'),
                   '50DayMovingAverage': overview_data.get('50DayMovingAverage', 'N/A'),
                   '200DayMovingAverage': overview_data.get('200DayMovingAverage', 'N/A'),
-                  'Volume': overview_data.get('Volume', 'N/A'),  
+                  'Volume': global_quote_data.get('06. volume', 'N/A'),
                   'SharesOutstanding': overview_data.get('SharesOutstanding', 'N/A'),
                   'DividendPerShare': overview_data.get('DividendPerShare', 'N/A'),
                   'DividendYield': overview_data.get('DividendYield', 'N/A'),
