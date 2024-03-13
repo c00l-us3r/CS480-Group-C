@@ -24,17 +24,17 @@
     
         <!-- Center-aligned links -->
         <div class="navbar-nav mx-auto">
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">XOM</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">CVX</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">NVDA</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">WMT</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">KO</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">PFE</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">VZ</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">HD</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">ZG</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">META</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">GOOGL</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'XOM' %}" style="font-size: large;">XOM</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'CVX' %}" style="font-size: large;">CVX</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'NVDA' %}" style="font-size: large;">NVDA</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'WMT' %}" style="font-size: large;">WMT</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'KO' %}" style="font-size: large;">KO</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'PFE' %}" style="font-size: large;">PFE</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'VZ' %}" style="font-size: large;">VZ</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'HD' %}" style="font-size: large;">HD</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'ZG' %}" style="font-size: large;">ZG</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'META' %}" style="font-size: large;">META</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'GOOGL' %}" style="font-size: large;">GOOGL</a>
         </div>
       </div>
     </nav>
@@ -196,28 +196,28 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Market Capitalization</span>
-                      <span>100 M</span>
+                      <span>{{stock_info.MarketCapitalization}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>EBITDA</span>
-                      <span>90 M</span>
+                      <span>{{stock_info.EBITDA}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Book Value</span>
-                      <span>$12.54</span>
+                      <span>{{stock_info.BookValue}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>EPS</span>
-                      <span>$4.65</span>
+                      <span>{{stock_info.EPS}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
@@ -230,28 +230,28 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>P/E Ratio</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.PERatio}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>P/E/G Ratio</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.PEGRatio}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Trailing P/E</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.TrailingPE}} </span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Forward P/E</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.ForwardPE}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
@@ -268,38 +268,41 @@
             style="height: 100%; border-radius: 10px;">
 
             <!-- Company Name and Ticker -->
-            <h1 style="font-display: 1; font-weight: bold;">APPLE</h1>
-            <h2 style="font-size: x-large">AAPL $35.29 <span class="text-light-green"
-                style="font-weight: bold;">+2.49%</span></h2>
+            <h1 style="font-weight: bold;">{{ stock_info.Name }}</h1>
+            <h2 style="font-size: x-large">
+                {{ stock_info.Symbol }} ${{ stock_info.AnalystTargetPrice }} 
+                <span class="text-light-green" style="font-weight: bold;">{{ stock_info.change_percent }}</span>
+            </h2>
             <br>
+
 
             <!-- Container for Open/Close/High/Low -->
             <div class="col-md-12 mt-lg-3 mb-lg-5">
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Open</span>
-                  <span>$36</span>
+                  <span>${{stock_info.open}}</span>
                 </div>
                 <hr class="my-1">
               </div>
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Close</span>
-                  <span>$32</span>
+                  <span>${{stock_info.close}}</span>
                 </div>
                 <hr class="my-1">
               </div>
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">High</span>
-                  <span>$36</span>
+                  <span>${{stock_info.high}}</span>
                 </div>
                 <hr class="my-1">
               </div>
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Low</span>
-                  <span>$32</span>
+                  <span>${{stock_info.low}}</span>
                 </div>
                 <hr class="my-1">
               </div>
@@ -313,16 +316,7 @@
 
             <!--About Section-->
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nullam nec vehicula nisi, sed interdum ante. Cras vel justo ut ligula cursus varius. Integer accumsan
-              auctor felis, eget molestie quam efficitur nec.
-              Sed auctor risus sed libero condimentum, sit amet luctus nulla convallis. Sed vitae felis eu metus finibus
-              scelerisque.
-              Nam pretium euismod dolor, id lacinia elit tempus sed. Nulla facilisi.
-              Sed sit amet lacinia ante. Vivamus non condimentum odio. Integer aliquet ex eu arcu ullamcorper, et
-              faucibus mauris malesuada.
-              In hac habitasse platea dictumst. Sed quis nulla ligula.
-              Sed venenatis lorem vitae tempor pulvinar. Sed pretium justo a volutpat bibendum.
+              {{ stock_info.Description|default:"Description not available" }}
             </p>
 
             <br>
@@ -337,28 +331,28 @@
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Sector</span>
-                        <span><i class="bi bi-motherboard"></i> Technology</span>
+                        <span><i class="bi bi-motherboard"></i> {{ stock_info.Sector }} </span>
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Industry</span>
-                        <span>Hardware Sales</span>
+                        <span> {{stock_info.Industry}} </span>
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Country</span>
-                        <span>USA</span>
+                        <span> {{stock_info.Country}} </span>
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Location</span>
-                        <span>Cupertino, CA</span>
+                        <span> {{stock_info.City}}, {{ stock_info.State}} </span>
                       </div>
                       <hr class="my-1">
                     </div>
@@ -371,28 +365,28 @@
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>CIK</span>
-                        <span>12345</span>
+                        <span>{{stock_info.CIK}} </span>
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Exchange</span>
-                        <span>NYSE</span>
+                        <span>{{stock_info.Exchange}}</span>
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Currency</span>
-                        <span>USD</span>
+                        <span>{{stock_info.Currency}}</span>
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Asset Type</span>
-                        <span>Common Stock</span>
+                        <span>{{stock_info.AssetType}}</span>
                       </div>
                       <hr class="my-1">
                     </div>
@@ -418,42 +412,43 @@
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>Analyst Target Price</span>
-                <span>$$$</span>
+                <span>{{stock_info.AnalystTargetPrice}}</span>
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>Price to Sales Ratio</span>
-                <span>$$$</span>
+                <span>{{stock_info.PriceToSalesRatioTTM}}</span>
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>Price to Book Ratio</span>
-                <span>$12.54</span>
+                <span>{{stock_info.PriceToBookRatio}}</span>
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>EV to Revenue</span>
-                <span>$$$</span>
+                <span>{{stock_info.EVToRevenue}}</span>
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>EV to EBITDA</span>
-                <span>$$$</span>
+                <span>{{stock_info.EVToEBITDA}}</span>
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
+                <!--not sure how to display volatility, someone else implemented it?-->
                 <span>Volatility</span>
-                <span>$$$</span>
+                <span>{{stock_info.Volatility}}</span>
               </div>
               <hr class="my-1">
             </div>
@@ -472,35 +467,35 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Revenue Per Share (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.RevenuePerShareTTM}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Profit Margin (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.ProfitMargin}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Operating Margin (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.OperatingMarginTTM}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Return on Assets (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.ReturnOnAssetsTTM}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Return on Equity (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.ReturnOnEquityTTM}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
@@ -513,35 +508,35 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Revenue (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.RevenueTTM}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Gross Profit (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.GrossProfitTTM}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Quarterly Earnings Growth (YOY)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.QuarterlyEarningsGrowthYOY}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Quarterly Revenue Growth(YOY)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.QuarterlyRevenueGrowthYOY}}</span>
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Diluted EPS (TTM)</span>
-                      <span>$$$</span>
+                      <span>{{stock_info.DilutedEPSTTM}}</span>
                     </div>
                     <hr class="my-1">
                   </div>

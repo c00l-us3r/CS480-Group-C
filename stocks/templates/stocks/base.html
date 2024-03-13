@@ -24,22 +24,22 @@
         
         <!-- Center-aligned links -->
         <div class="navbar-nav mx-auto">
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">XOM</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">CVX</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">NVDA</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">WMT</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">KO</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">PFE</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">VZ</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">HD</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">ZG</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">META</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'detailed' %}" style="font-size: large;">GOOGL</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'XOM' %}" style="font-size: large;">XOM</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'CVX' %}" style="font-size: large;">CVX</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'NCDA' %}" style="font-size: large;">NVDA</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'WMT' %}" style="font-size: large;">WMT</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'KO' %}" style="font-size: large;">KO</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'PFE' %}" style="font-size: large;">PFE</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'VZ' %}" style="font-size: large;">VZ</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'HD' %}" style="font-size: large;">HD</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'ZG' %}" style="font-size: large;">ZG</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'META' %}" style="font-size: large;">META</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'detailed' 'GOOGL' %}" style="font-size: large;">GOOGL</a>
         </div>
       </div>
     </nav>
     
-
+    
     <!-- Main content area -->
 
     <!-- Row containing View Chart, 52 Week High, Market Capitilization, and About Sections -->
@@ -82,119 +82,15 @@
           </div>
 
           <!-- 52 Week High to Latest Quarter Section -->
-          <div
-            class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-90 shadow"
-            style="height: auto; border-radius: 10px;">
-            <div class="row">
-              <div class="table-responsive">
-                <!-- Stock information table formatting subject to change-->
-                <table class=" table table-bordered table-striped table-hover bg-light">
-                  <thead>
-                    <tr>
-                      <th scope="col-lg-2"> </th>
-                      <th scope="col-lg-2"> High </th>
-                      <th scope="col-lg-2"> Low </th>
-                      <th scope="col-lg-2"> Open </th>
-                      <th scope="col-lg-2"> Close </th>
-                      <th scope="col-lg-2"> Volume </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!--Format rows.-->
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">XOM</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">CVX</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">NVDA</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">WMT</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">KO</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">PFE</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">VZ</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">HD</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">ZG</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">META</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">GOOGL</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
 
+                <!-- Stock information table formatting subject to change-->
+                    <!--Format rows.-->
+                    
+                    {% block content %}
+                    <!--Table views from home.html: symbol, high, low, open, close, volume-->
+                    {% endblock %}
+                
+          </div>
         </div>
 
         <!-- Column for About Section -->

@@ -1,25 +1,32 @@
-<!--Not currently being used, i.e. Will Change as needed for AlphaVantage API Info(Was using a different API when I created this.)-->
-{% extends "base.html" %}
+{% extends "stocks/base.html" %}
+
 {% block content %}
-
-{% if ticker %}
-    {{ ticker }}
-{% endif %}
-
-{% if api %}
-    {% if api == "Error..." %}
-        There was a problem with ticker symbol and an error was thrown..
-    {% else %}
-    
-    <h1>{{ api.companyName }}</h1><br/>
-    Price: {{ api.latestPrice }}<br/>
-    Previous Close: {{ api.previousClose }}<br/>
-    Market Cap: {{ api.marketCap }}<br/>
-    YTD Change: {{ api.ytdChange }}<br/>
-    52WK High: {{ api.week52High }}<br/>
-    52WK Low: {{ api.week52Low }}<br/>
-
-    {% endif %}
-{% endif %}
-
+<div class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-90 shadow"
+style="height: auto; border-radius: 10px;">
+    <div class="row">
+        <table class="table table-bordered table-striped table-hover bg-light">
+            <thead>
+                <tr>
+                    <th scope="col-lg-2">  </th>
+                    <th scope="col-lg-2"> High </th>
+                    <th scope="col-lg-2"> Low </th>
+                    <th scope="col-lg-2"> Open </th>
+                    <th scope="col-lg-2"> Close </th>
+                    <th scope="col-lg-2"> Volume </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stock_data %}
+                <tr>
+                    <td><a href="{% url 'detailed' symbol=stock.symbol %}" style="color:black">{{ stock.symbol }}</a></td>
+                    <td>{{ stock.high }}</td>
+                    <td>{{ stock.low }}</td>
+                    <td>{{ stock.open }}</td>
+                    <td>{{ stock.close }}</td>
+                    <td>{{ stock.volume }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

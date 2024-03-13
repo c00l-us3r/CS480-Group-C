@@ -1,30 +1,8 @@
-"""
-URL configuration for web_project project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django import views
 from django.contrib import admin
-from django.urls import path, include
-from django.shortcuts import render
-from .views import home
-from stocks.views import detailed
+from django.urls import path, include  # Ensure views are correctly imported within each app's urls.py
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
-    path('' , include('stocks.urls')), # Include the stocks.urls file for the home page
-    path('detailed/', detailed, name="detailed"),
+    path('', include('stocks.urls')),  # Include the stocks app URLs at the root
+    # Removed the direct path to 'home' and 'detailed' here to avoid duplication and conflicts
 ]
-
