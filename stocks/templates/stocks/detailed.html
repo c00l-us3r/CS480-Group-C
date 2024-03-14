@@ -61,7 +61,7 @@
       <div class="row">
 
         <!-- Column contained Chart, 52 Week Section, and Capitilization Section -->
-        <div class="col-lg-8">
+        <div class="col-lg-8 d-flex flex-column">
 
           <!-- Trading View Chart Box -->
           <div id="tradingview-chart"
@@ -136,8 +136,7 @@
           </div>
 
           <!-- 52 Week High to Latest Quarter Section -->
-          <div
-            class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
+          <div class="container-fluid bg-white p-3 mb-3 justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: auto; border-radius: 10px;">
             <div class="row">
               <div class="col-md-6">
@@ -149,42 +148,54 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>52 Week High</span>
-                      <span>December</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.number_52weekhigh }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>52 Week Low</span>
-                      <span>2023-12-31</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.number_52weeklow }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>50 Day Average</span>
-                      <span>5.2 M</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.number_50daymovingaverage }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>200 Day Average</span>
-                      <span>9131190000</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.number_200daymovingaverage }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Volume</span>
-                      <span>5.1 M</span>
+                      {% for stock in filteredPD %}
+                      <span>{{ stock.volume }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Shares Outstanding</span>
-                      <span>9131190000</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.sharesoutstanding }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
@@ -195,42 +206,54 @@
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center">
                     <span>Dividend Per Share</span>
-                    <span>$0.65</span>
+                    {% for stock in filteredFFD %}
+                    <span>{{ stock.dividendpershare }}</span>
+                    {% endfor %}
                   </div>
                   <hr class="my-1">
                 </div>
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center">
                     <span>Dividend Yield</span>
-                    <span>$0.05</span>
+                    {% for stock in filteredFFD %}
+                    <span>{{ stock.divdendyield }}</span>
+                    {% endfor %}
                   </div>
                   <hr class="my-1">
                 </div>
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center">
                     <span>Dividend Date</span>
-                    <span>2024-06-31</span>
+                    {% for stock in filteredFFD %}
+                    <span>{{ stock.dividenddate }}</span>
+                    {% endfor %}
                   </div>
                   <hr class="my-1">
                 </div>
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center">
                     <span>Ex Dividend Date</span>
-                    <span>2024-07-01</span>
+                    {% for stock in filteredFFD %}
+                    <span>{{ stock.exdividenddate }}</span>
+                    {% endfor %}
                   </div>
                   <hr class="my-1">
                 </div>
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center">
                     <span>Fiscal Year End</span>
-                    <span>December</span>
+                    {% for stock in filteredFFD %}
+                    <span>{{ stock.fiscalyearend }}</span>
+                    {% endfor %}
                   </div>
                   <hr class="my-1">
                 </div>
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center">
                     <span>Latest Quarter</span>
-                    <span>2023-12-31</span>
+                    {% for stock in filteredFFD %}
+                    <span>{{ stock.latestquarter }}</span>
+                    {% endfor %}
                   </div>
                   <hr class="my-1">
                 </div>
@@ -249,28 +272,36 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Market Capitalization</span>
-                      <span>100 M</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.marketcapitalization }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>EBITDA</span>
-                      <span>90 M</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.ebitda }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Book Value</span>
-                      <span>$12.54</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.bookvalue }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>EPS</span>
-                      <span>$4.65</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.eps }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
@@ -283,28 +314,36 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>P/E Ratio</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.peration }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>P/E/G Ratio</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.pegration }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Trailing P/E</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.trailingpe }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Forward P/E</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.forwardpe }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
@@ -315,26 +354,41 @@
         </div>
 
         <!-- Column for About Section -->
-        <div class="col-lg-4 mb-3" style="display: flex; flex-direction: column; height: 100%; border-radius: 10px;">
-          <div
-            class="container-fluid bg-white p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-50 shadow"
-            style="height: 100%; border-radius: 10px;">
+        <div class="col-lg-4 mb-3" style="display: flex; flex-direction: column; height: auto; border-radius: 10px;">
+          <div class="container-fluid bg-white p-3 mb-3 d-flex flex-column align-items-stretch bg-opacity-50 shadow"
+            style="height: auto; border-radius: 10px;">
 
             <!-- Company Name and Ticker -->
-            <h1 style="font-display: 1; font-weight: bold;">APPLE</h1>
-            <h2 style="font-size: x-large">AAPL $35.29 <span class="text-light-green"
-                style="font-weight: bold;">+2.49%</span></h2>
-            <br>
+            <hr class="my-1">
+            <h1 style="font-display: 1; font-weight: bold;"> {% for stock in filteredFFD %} <span> {{ stock.name }}
+              </span> {% endfor %}</h1>
+            <h2 style="font-size: x-large">{% for stock in filteredFFD %} <span> {{ stock.symbol }} </span> {% endfor %}
+              {% for stock in filteredPD %} <span> $ {{ stock.open|floatformat:2 }} </span> {% endfor %}
+              {% for difference in price_differences %}
+              {% if difference > 0 %}
+              <span style="color: #00bf23; font-weight: bold;">+{{ difference|floatformat:2 }} <i
+                  class="bi bi-arrow-up-circle-fill"></i></span>
+              {% elif difference < 0 %}
+              <span style="color: red; font-weight: bold;">{{ difference|floatformat:2 }} <i
+                  class="bi bi-arrow-down-circle-fill"></i></span>
+              {% else %}
+              <span style="color: gray; font-weight: bold;">{{ difference|floatformat:2 }}</span>
+              {% endif %}
+              {% endfor %}</h2>
+          </div>
+
+          <div
+            class="container-fluid bg-white p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-50 shadow"
+            style="height: auto; border-radius: 10px;">
 
             <!-- Container for Open/Close/High/Low -->
-            <div class="col-md-12 mt-lg-3 mb-lg-5">
+            <div class="col-md-12 mt-lg-2 mb-lg-2 ">
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Open</span>
                   {% for stock in filteredPD %}
-                  <span>{{ stock.open }}</span>
+                  <span>$ {{ stock.open|floatformat:2 }}</span>
                   {% endfor %}
-
                 </div>
                 <hr class="my-1">
               </div>
@@ -342,7 +396,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Close</span>
                   {% for stock in filteredPD %}
-                  <li>{{ stock.close }}</li>
+                  <span>$ {{ stock.close|floatformat:2 }}</span>
                   {% endfor %}
                 </div>
                 <hr class="my-1">
@@ -351,7 +405,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">High</span>
                   {% for stock in filteredPD %}
-                  <li>{{ stock.high }}</li>
+                  <span>$ {{ stock.high|floatformat:2 }}</span>
                   {% endfor %}
                 </div>
                 <hr class="my-1">
@@ -360,94 +414,101 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Low</span>
                   {% for stock in filteredPD %}
-                  <li>{{ stock.low }}</li>
+                  <span>$ {{ stock.low|floatformat:2 }}</span>
                   {% endfor %}
                 </div>
                 <hr class="my-1">
               </div>
             </div>
 
-            <br>
-            <br>
+          </div>
+
+          <div
+            class="container-fluid bg-white p-3 mb-3 d-flex flex-column align-items-stretch bg-opacity-50 shadow align-items-start"
+            style="height: auto; border-radius: 10px; ">
 
             <!-- About Header -->
             <h2 style="font-size: medium; font-weight: bold;">About</h2>
+            <hr class="my-1">
 
             <!--About Section-->
             <p>
               {% for stock in filteredFFD %}
-              <li>{{ stock.desc }}</li>
+              <span style="line-height: 1.75;">{{ stock.desc }}</span>
               {% endfor %}
             </p>
 
-            <br>
+          </div>
+          <div class="container-fluid bg-white p-3 d-flex flex-column align-items-stretch bg-opacity-50 shadow"
+            style="height: auto; border-radius: 10px;">
 
             <!-- Company Information-->
             <div style="margin-top: auto;">
               <div class="row align-items-bottom">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <!-- Left Column -->
                   <div class="row">
                     <!-- 4 rows in left column -->
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Sector</span>
-                        <span><i class="bi bi-motherboard"></i> Technology</span>
+                        {% for stock in filteredFFD %}
+                        <span>{{ stock.sector }}</span>
+                        {% endfor %}
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Industry</span>
-                        <span>Hardware Sales</span>
+                        {% for stock in filteredFFD %}
+                        <span>{{ stock.industry }}</span>
+                        {% endfor %}
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Country</span>
-                        <span>USA</span>
+                        {% for stock in filteredFFD %}
+                        <span>{{ stock.address }}</span>
+                        {% endfor %}
                       </div>
                       <hr class="my-1">
                     </div>
-                    <div class="col-md-12">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span>Location</span>
-                        <span>Cupertino, CA</span>
-                      </div>
-                      <hr class="my-1">
-                    </div>
-
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <!-- Right Column -->
-                  <div class="row">
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>CIK</span>
-                        <span>12345</span>
+                        {% for stock in filteredFFD %}
+                        <span>{{ stock.cik }}</span>
+                        {% endfor %}
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Exchange</span>
-                        <span>NYSE</span>
+                        {% for stock in filteredFFD %}
+                        <span>{{ stock.exchange }}</span>
+                        {% endfor %}
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Currency</span>
-                        <span>USD</span>
+                        {% for stock in filteredFFD %}
+                        <span>{{ stock.currency }}</span>
+                        {% endfor %}
                       </div>
                       <hr class="my-1">
                     </div>
                     <div class="col-md-12">
                       <div class="d-flex justify-content-between align-items-center">
                         <span>Asset Type</span>
-                        <span>Common Stock</span>
+                        {% for stock in filteredFFD %}
+                        <span>{{ stock.assettype }}</span>
+                        {% endfor %}
                       </div>
                       <hr class="my-1">
                     </div>
@@ -473,42 +534,45 @@
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>Analyst Target Price</span>
-                <span>$$$</span>
+                {% for stock in filteredFFD %}
+                <span>{{ stock.analysttargetprice }}</span>
+                {% endfor %}
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>Price to Sales Ratio</span>
-                <span>$$$</span>
+                {% for stock in filteredFFD %}
+                <span>{{ stock.pricetosalesrationttm }}</span>
+                {% endfor %}
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>Price to Book Ratio</span>
-                <span>$12.54</span>
+                {% for stock in filteredFFD %}
+                <span>{{ stock.pricetobookratio }}</span>
+                {% endfor %}
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>EV to Revenue</span>
-                <span>$$$</span>
+                {% for stock in filteredFFD %}
+                <span>{{ stock.evtorevenue }}</span>
+                {% endfor %}
               </div>
               <hr class="my-1">
             </div>
             <div class="col-md-12">
               <div class="d-flex justify-content-between align-items-center">
                 <span>EV to EBITDA</span>
-                <span>$$$</span>
-              </div>
-              <hr class="my-1">
-            </div>
-            <div class="col-md-12">
-              <div class="d-flex justify-content-between align-items-center">
-                <span>Volatility</span>
-                <span>$$$</span>
+                {% for stock in filteredFFD %}
+                <span>{{ stock.evtoebitda }}</span>
+                {% endfor %}
               </div>
               <hr class="my-1">
             </div>
@@ -527,35 +591,45 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Revenue Per Share (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.revenuepersharettm }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Profit Margin (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.profitmargin }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Operating Margin (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.operatingmarginttm }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Return on Assets (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.returnonassetsttm }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Return on Equity (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.returnonequityttm }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
@@ -568,35 +642,45 @@
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Revenue (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.revenuettm }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Gross Profit (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.grossprofitttm }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Quarterly Earnings Growth (YOY)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.quarterlyearningsgrowthyoy }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Quarterly Revenue Growth(YOY)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.quarterlyrevenuegrowthyoy }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center">
                       <span>Diluted EPS (TTM)</span>
-                      <span>$$$</span>
+                      {% for stock in filteredFFD %}
+                      <span>{{ stock.dilutedepsttm }}</span>
+                      {% endfor %}
                     </div>
                     <hr class="my-1">
                   </div>

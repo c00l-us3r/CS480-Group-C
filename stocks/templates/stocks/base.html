@@ -143,11 +143,13 @@
                     <!--Format rows.-->
                     <tr>
                       <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">XOM</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
+                      {% for pd in filteredPD %}
+                      <td>{{ pd.high }}</td>
+                      <td>{{ pd.low }}</td>
+                      <td>{{ pd.open }}</td>
+                      <td>{{ pd.close }}</td>
+                      <td>{{ pd.volume }}</td>
+                      {% endfor %}
                     </tr>
                     <tr>
                       <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">CVX</a></th>
