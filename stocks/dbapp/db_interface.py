@@ -63,13 +63,13 @@ def updateDB(symbol, apikey):
     ffd.save()
 
     #store PD
-    if PD.objects.filter(symbol=FFDtokens[0]).exists:
+    """ if PD.objects.filter(symbol=FFDtokens[0]).exists:
         PD.objects.filter(symbol=FFDtokens[0]).update(
             open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4]
         )
-    else:
-        pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
-        pd.save()
+    else: """
+    pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
+    pd.save()
 
 #return a list of strings from the databse for FFD
 #Here are the indexes:
