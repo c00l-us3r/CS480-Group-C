@@ -151,10 +151,10 @@ class FinancialFundamentalData(models.Model):
     peration = models.CharField(db_column='PERation', max_length=10)  # Field name made lowercase.
     pegration = models.CharField(db_column='PEGRation', max_length=10)  # Field name made lowercase.
     bookvalue = models.CharField(db_column='BookValue', max_length=10)  # Field name made lowercase.
-    dividendpershare = models.CharField(db_column='DividendPerShare', max_length=45)  # Field name made lowercase.
-    dividendyield = models.CharField(db_column='DividendYield', max_length=10)  # Field name made lowercase.
+    dividendpershare = models.CharField(db_column='DividenPerShare', max_length=50)  # Field name made lowercase.
+    divdendyield = models.CharField(db_column='DivdendYield', max_length=10)  # Field name made lowercase.
     eps = models.CharField(db_column='EPS', max_length=10)  # Field name made lowercase.
-    revenuepersharettm = models.CharField(db_column='RevenuePerShareTTM', max_length=10)  # Field name made lowercase.
+    revenuepersharettm = models.CharField(db_column='RevenuePerSareTTM', max_length=10)  # Field name made lowercase.
     profitmargin = models.CharField(db_column='ProfitMargin', max_length=10)  # Field name made lowercase.
     operatingmarginttm = models.CharField(db_column='OperatingMarginTTM', max_length=10)  # Field name made lowercase.
     returnonassetsttm = models.CharField(db_column='ReturnOnAssetsTTM', max_length=10)  # Field name made lowercase.
@@ -183,7 +183,7 @@ class FinancialFundamentalData(models.Model):
     number_200daymovingaverage = models.CharField(db_column='200DayMovingAverage', max_length=10)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
     sharesoutstanding = models.CharField(db_column='SharesOutstanding', max_length=10)  # Field name made lowercase.
     dividenddate = models.CharField(db_column='DividendDate', max_length=10)  # Field name made lowercase.
-    exdividenddate = models.CharField(db_column='ExDividendDate', max_length=10)  # Field name made lowercase.
+    exdividenddate = models.CharField(db_column='ExDivedendDate', max_length=10)  # Field name made lowercase.
 
     class Meta:
         managed = False

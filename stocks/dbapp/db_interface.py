@@ -39,7 +39,7 @@ def updateDB(symbol, apikey):
             assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
             exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
             address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
-            peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], dividendyield=FFDtokens[19],
+            peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], divdendyield=FFDtokens[19],
             eps=FFDtokens[20], revenuepersharettm=FFDtokens[21], profitmargin=FFDtokens[22], operatingmarginttm=FFDtokens[23], returnonassetsttm=FFDtokens[24],
             returnonequityttm=FFDtokens[25], revenuettm=FFDtokens[26], grossprofitttm=FFDtokens[27], dilutedepsttm=FFDtokens[28], quarterlyearningsgrowthyoy=FFDtokens[29],
             quarterlyrevenuegrowthyoy=FFDtokens[30], analysttargetprice=FFDtokens[31], analystratingstrongbuy=FFDtokens[32], analystratingbuy=FFDtokens[33], analystratinghold=FFDtokens[34],
@@ -52,7 +52,7 @@ def updateDB(symbol, apikey):
         ffd = FFD(symbol=FFDtokens[0], assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
                 exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
                 address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
-                peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], dividendyield=FFDtokens[19],
+                peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], divdendyield=FFDtokens[19],
                 eps=FFDtokens[20], revenuepersharettm=FFDtokens[21], profitmargin=FFDtokens[22], operatingmarginttm=FFDtokens[23], returnonassetsttm=FFDtokens[24],
                 returnonequityttm=FFDtokens[25], revenuettm=FFDtokens[26], grossprofitttm=FFDtokens[27], dilutedepsttm=FFDtokens[28], quarterlyearningsgrowthyoy=FFDtokens[29],
                 quarterlyrevenuegrowthyoy=FFDtokens[30], analysttargetprice=FFDtokens[31], analystratingstrongbuy=FFDtokens[32], analystratingbuy=FFDtokens[33], analystratinghold=FFDtokens[34],
@@ -130,7 +130,7 @@ def pullFFDfromDB(inputSymbol):
     query = FFD.objects.get(symbol=inputSymbol)
     list = [query.symbol, query.assettype, query.name, query.desc, query.cik, query.exchange, query.currency, query.country, query.sector, query.industry,
             query.address, query.fiscalyearend, query.latestquarter, query.marketcapitalization, query.ebitda, query.peration, query.pegration, 
-            query.bookvalue, query.dividendpershare, query.dividendyield, query.eps, query.revenuepersharettm, query.profitmargin, query.operatingmarginttm, 
+            query.bookvalue, query.dividendpershare, query.divdendyield, query.eps, query.revenuepersharettm, query.profitmargin, query.operatingmarginttm, 
             query.returnonassetsttm, query.returnonequityttm, query.revenuettm, query.grossprofitttm, query.dilutedepsttm, query.quarterlyearningsgrowthyoy,
             query.quarterlyrevenuegrowthyoy, query.analysttargetprice, query.analystratingstrongbuy, query.analystratingbuy, query.analystratinghold, 
             query.analystratingsell, query.analystratingstrongsell, query.trailingpe, query.forwardpe, query.pricetosalesrationttm,
@@ -159,3 +159,23 @@ def pullLPfromDB():
     list = [query.date, query.time]
     return list
 
+def fillDatabaseWithSymbols(symbols, apikey):
+    """
+    Fills the database with financial and pricing data for a list of symbols.
+
+    :param symbols: A list of stock symbols to update in the database.
+    :param apikey: API key for accessing financial data services.
+    """
+    
+    
+    for symbol in symbols:
+        print(f"Updating data for symbol: {symbol}")
+        updateDB(symbol, apikey)
+        print(f"Data update completed for symbol: {symbol}")
+        
+def main():
+    apikey = "O7XGNPGQU35IKLRW"
+    fillDatabaseWithSymbols(["XOM", "CVX", "NVDA", "WMT", "KO", "PFE", "VZ", "HD", "ZG", "META", "GOOGL"], apikey)
+
+if __name__ == '__main__':
+    main()    
