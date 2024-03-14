@@ -14,7 +14,6 @@ class AuthGroup(models.Model):
     class Meta:
         managed = False
         db_table = 'auth_group'
-        app_label = 'dbapp'
 
 
 class AuthGroupPermissions(models.Model):
@@ -26,7 +25,6 @@ class AuthGroupPermissions(models.Model):
         managed = False
         db_table = 'auth_group_permissions'
         unique_together = (('group', 'permission'),)
-        app_label = 'dbapp'
 
 
 class AuthPermission(models.Model):
@@ -38,7 +36,6 @@ class AuthPermission(models.Model):
         managed = False
         db_table = 'auth_permission'
         unique_together = (('content_type', 'codename'),)
-        app_label = 'dbapp'
 
 
 class AuthUser(models.Model):
@@ -56,7 +53,6 @@ class AuthUser(models.Model):
     class Meta:
         managed = False
         db_table = 'auth_user'
-        app_label = 'dbapp'
 
 
 class AuthUserGroups(models.Model):
@@ -68,7 +64,6 @@ class AuthUserGroups(models.Model):
         managed = False
         db_table = 'auth_user_groups'
         unique_together = (('user', 'group'),)
-        app_label = 'dbapp'
 
 
 class AuthUserUserPermissions(models.Model):
@@ -80,7 +75,6 @@ class AuthUserUserPermissions(models.Model):
         managed = False
         db_table = 'auth_user_user_permissions'
         unique_together = (('user', 'permission'),)
-        app_label = 'dbapp'
 
 
 class DjangoAdminLog(models.Model):
@@ -95,7 +89,6 @@ class DjangoAdminLog(models.Model):
     class Meta:
         managed = False
         db_table = 'django_admin_log'
-        app_label = 'dbapp'
 
 
 class DjangoContentType(models.Model):
@@ -106,7 +99,6 @@ class DjangoContentType(models.Model):
         managed = False
         db_table = 'django_content_type'
         unique_together = (('app_label', 'model'),)
-        app_label = 'dbapp'
 
 
 class DjangoMigrations(models.Model):
@@ -118,7 +110,6 @@ class DjangoMigrations(models.Model):
     class Meta:
         managed = False
         db_table = 'django_migrations'
-        app_label = 'dbapp'
 
 
 class DjangoSession(models.Model):
@@ -129,7 +120,6 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-        app_label = 'dbapp'
 
 
 class FinancialFundamentalData(models.Model):
@@ -188,7 +178,6 @@ class FinancialFundamentalData(models.Model):
     class Meta:
         managed = False
         db_table = 'financial_fundamental_data'
-        app_label = 'dbapp'
 
 
 class LastPull(models.Model):
@@ -199,18 +188,17 @@ class LastPull(models.Model):
         managed = False
         db_table = 'last_pull'
         unique_together = (('date', 'time'),)
-        app_label = 'dbapp'
 
 
 class PricingData(models.Model):
-    symbol = models.CharField(db_column='Symbol', max_length=10)  # Field name made lowercase.
+    symbol = models.OneToOneField(FinancialFundamentalData, models.DO_NOTHING, db_column='Symbol', primary_key=True)  # Field name made lowercase.
     open = models.CharField(db_column='Open', max_length=10)  # Field name made lowercase.
     high = models.CharField(db_column='High', max_length=10)  # Field name made lowercase.
     low = models.CharField(db_column='Low', max_length=10)  # Field name made lowercase.
     close = models.CharField(db_column='Close', max_length=10)  # Field name made lowercase.
     volume = models.CharField(db_column='Volume', max_length=10)  # Field name made lowercase.
+    currentprice = models.CharField(db_column='CurrentPrice', max_length=10)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'pricing_data'
-        app_label = 'dbapp'

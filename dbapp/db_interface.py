@@ -65,10 +65,10 @@ def updateDB(symbol, apikey):
     #store PD
     if PD.objects.filter(symbol=FFDtokens[0]).exists:
         PD.objects.filter(symbol=FFDtokens[0]).update(
-            open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4]
+            open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4], currentprice=PDtokens[5]
         )
     else:
-        pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
+        pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4], currentPrice=PDtokens[5])
         pd.save()
 
 #return a list of strings from the databse for FFD
@@ -147,10 +147,11 @@ def pullFFDfromDB(inputSymbol):
 2 = Low
 3 = Close
 4 = Volume
+5 = Current Price
 """
 def pullPDfromDB(inputSymbol):
     query = PD.objects.get(symbol=inputSymbol)
-    list = [query.open, query.high, query.low, query.close, query.volume]
+    list = [query.open, query.high, query.low, query.close, query.volume, query.currentprice]
     return list
 
 #return a list with the last pull from AlphaVantage
