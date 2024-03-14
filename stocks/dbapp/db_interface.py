@@ -7,7 +7,7 @@ settings.configure(DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'stock_data',   #name of the database
         'USER': 'root',         #change to your username
-        'PASSWORD': '1234',     #change to your password
+        'PASSWORD': 'password',     #change to your password
         'HOST': 'localhost',    #change to your host
         'PORT': '3306',         #change to your port
     }
@@ -24,6 +24,7 @@ from datetime import datetime
 def updateDB(symbol, apikey):
     #pull data
     FFDtokens = getFFD(symbol, apikey)
+    print(FFDtokens)
     PDtokens = getPD(symbol, apikey)
     currDay = today.today()
     currTime = datetime.now()
@@ -33,10 +34,9 @@ def updateDB(symbol, apikey):
     lp = LP(date=currDay, time=timeFormat)
     lp.save()
 
-    #store FFD
+    """ #store FFD
     if FFD.objects.filter(symbol=FFDtokens[0]).exists:
-        FFD.objects.filter(symbol=FFDtokens[0]).update(
-            assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
+           assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
             exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
             address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
             peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], divdendyield=FFDtokens[19],
@@ -48,8 +48,8 @@ def updateDB(symbol, apikey):
             number_52weeklow=FFDtokens[45], number_50daymovingaverage=FFDtokens[46], number_200daymovingaverage=FFDtokens[47], sharesoutstanding=FFDtokens[48], dividenddate=FFDtokens[49],
             exdividenddate=FFDtokens[50]
         )
-    else:
-        ffd = FFD(symbol=FFDtokens[0], assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
+    else: """
+    ffd = FFD(symbol=FFDtokens[0], assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
                 exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
                 address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
                 peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], divdendyield=FFDtokens[19],
@@ -60,7 +60,7 @@ def updateDB(symbol, apikey):
                 pricetobookratio=FFDtokens[40], evtorevenue=FFDtokens[41], evtoebitda=FFDtokens[42], beta=FFDtokens[43], number_52weekhigh=FFDtokens[44],
                 number_52weeklow=FFDtokens[45], number_50daymovingaverage=FFDtokens[46], number_200daymovingaverage=FFDtokens[47], sharesoutstanding=FFDtokens[48], dividenddate=FFDtokens[49],
                 exdividenddate=FFDtokens[50])
-        ffd.save()
+    ffd.save()
 
     #store PD
     if PD.objects.filter(symbol=FFDtokens[0]).exists:
@@ -159,6 +159,7 @@ def pullLPfromDB():
     list = [query.date, query.time]
     return list
 
+
 def fillDatabaseWithSymbols(symbols, apikey):
     """
     Fills the database with financial and pricing data for a list of symbols.
@@ -174,8 +175,10 @@ def fillDatabaseWithSymbols(symbols, apikey):
         print(f"Data update completed for symbol: {symbol}")
         
 def main():
-    apikey = "O7XGNPGQU35IKLRW"
+    apikey = "TIZIBHZ1JKJVWIFP"
     fillDatabaseWithSymbols(["XOM", "CVX", "NVDA", "WMT", "KO", "PFE", "VZ", "HD", "ZG", "META", "GOOGL"], apikey)
+    #getFFD("AAPL", apikey)
+    #getPD("AAPL", apikey)
 
 if __name__ == '__main__':
-    main()    
+    main()     

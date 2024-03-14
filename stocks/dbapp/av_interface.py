@@ -80,9 +80,7 @@ Indexes are as follows:
 50 = ExDividendDate
 """
 def getFinancialFundamentalData(symbol, apikey):
-    
     dataString = pull("OVERVIEW", symbol, apikey)
-    
     tokens = dataString.split(": ")
     
     del tokens[0] 
@@ -90,10 +88,10 @@ def getFinancialFundamentalData(symbol, apikey):
     tokens[len(tokens)-1] = tokens[len(tokens)-1][0:-1] #remove the last }
     
     count = -1
-    for i in range(0, len(tokens)): #remove unnecesarry info from each token
+    for i in range(0, len(tokens)): #remove unnecessary info from each token
         count += 1
         tokens[i] = stripPastComma(tokens[i])
-        
+        print("Token {}: {}".format(i, tokens[i]))  # Print each token
         if tokens[i].isdigit(): #format numbers over 1 billion and 1 million into 1.0B and 1.0M respectively
             number = float(tokens[i])
             if number >= 1e9:
@@ -102,26 +100,18 @@ def getFinancialFundamentalData(symbol, apikey):
                 tokens[i] = "{:.1f}M".format(number / 1e6)
     return tokens
 
-"""
-Returns array of data from the TIME_SERIES_INTRADAY Alpha Vantage Endpoint.
-Indexes are as follows:
-0 = Open
-1 = High
-2 = Low
-3 = Close
-4 = Volume
-"""
 def getPricingData(symbol, apiKey):
-    
     dataString = pull("TIME_SERIES_INTRADAY", symbol, apiKey)
-
     tokens = dataString.split(": ")
     
     tokens = tokens[10:15]
     
     for i in range(0,5):
         tokens[i] = stripPastComma(tokens[i])
+        print("Token {}: {}".format(i, tokens[i]))  # Print each token
     
     tokens[4] = tokens[4][0:len(tokens)-3]
     
     return tokens
+
+
