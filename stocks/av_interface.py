@@ -110,18 +110,34 @@ Indexes are as follows:
 2 = Low
 3 = Close
 4 = Volume
+5 = CurrentPrice
 """
 def getPricingData(symbol, apiKey):
-    
-    dataString = pull("TIME_SERIES_INTRADAY", symbol, apiKey)
 
-    tokens = dataString.split(": ")
-    
-    tokens = tokens[10:15]
-    
+    dataStringFive = pull("TIME_SERIES_INTRADAY", symbol, apiKey)
+    dataStringDay = pull("TIME_SERIES_DAILY", symbol, apiKey)
+
+    tokensFive = dataStringFive.split(": ")
+    tokensDay = dataStringDay.split(": ")
+
+    currentPrice = tokensFive[10]
+    tokensDay = tokensDay[9:14]
+
     for i in range(0,5):
-        tokens[i] = stripPastComma(tokens[i])
-    
-    tokens[4] = tokens[4][0:len(tokens)-3]
-    
+        tokensDay[i] = stripPastComma(tokensDay[i])
+
+    tokensDay[4] = tokensDay[4][0:len(tokensDay[4])-1]
+    currentPrice = stripPastComma(currentPrice)
+
+    tokens = [' '] * 6
+
+    for i in range(0,5):
+        tokens[i] = tokensDay[i]
+    tokens[5] = currentPrice
+
+
+    for i in range(0,6):
+        if i != 4:
+            tokens[i] = tokens[i][0:len(tokens[i])-2]
+
     return tokens
