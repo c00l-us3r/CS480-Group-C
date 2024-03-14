@@ -12,8 +12,7 @@ def detailed(request):
     ffd = FinancialFundamentalData.objects.all()  # Query all FinancialFundamentalData objects
     pd = PricingData.objects.all()  # Query all PricingData objects
     lp = LastPull.objects.all()  # Query all LastPull objects
-    return render(request, 'template_name.html', {'ffd': ffd, 'pd': pd, 'lp': lp})
-
+    return render(request, 'stocks/detailed.html', {'ffd': ffd, 'pd': pd, 'lp': lp})
 
 
 def test(request):
