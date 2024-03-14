@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta tags, title, and CSS imports -->
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {% load static %}
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'stocks/detailed.css' %}" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="bg-light bg-gradient">
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <!-- Left-aligned link -->
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="font-size: x-large;"><i class="bi bi-house-fill"></i></a>
+      </div>
+      
+      <!-- Center-aligned links -->
+      <div class="navbar-nav mx-auto">
+        <a class="nav-link active" href="#" data-symbol="GOOGL" style="font-size: large;">GOOGL</a>
+        <a class="nav-link active" href="#" data-symbol="AAPL" style="font-size: large;">AAPL</a>
+        <!-- Add more navlinks for other symbols -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content area -->
+
+  <!-- Container for TradingView chart and other content -->
+  <div class="container mt-3 justify-content-center">
+    <!-- TradingView Chart -->
+    <!-- TradingView Chart -->
+    <div id="tradingview-chart" class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-90 shadow" style="height: 50vh; border-radius: 10px;">
+        <!-- Chart will be loaded dynamically here -->
+    </div>
+
+    <!-- About Section -->
+    <div id="tradingview-about" class="container-fluid bg-white p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-90 shadow" style="border-radius: 10px;">
+        <!-- TradingView Widget for About Section -->
+        <!-- About section chart will be loaded dynamically here -->
+    </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <!-- Your custom JavaScript -->
+  <script>
+    let tvScriptLoadingPromise;
+
+    function TradingViewWidget(chartSymbol, containerId) {
+        if (!tvScriptLoadingPromise) {
+            tvScriptLoadingPromise = new Promise((resolve) => {
+                const script = document.createElement("script");
+                script.id = "tradingview-widget-loading-script";
+                script.src = "https://s3.tradingview.com/tv.js";
+                script.type = "text/javascript";
+                script.onload = resolve;
+
+                document.head.appendChild(script);
+            });
+        }
+
+        tvScriptLoadingPromise.then(() => {
+            if (document.getElementById(containerId) && window.TradingView) {
+                new window.TradingView.widget({
+                    "autosize": true,
+                    "symbol": chartSymbol, // Initial symbol value
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "en",
+                    "enable_publishing": false,
+                    "hide_top_toolbar": true,
+                    "withdateranges": true,
+                    "save_image": false,
+                    "calendar": false,
+                    allow_symbol_change: true,
+                    container_id: containerId // Updated to use the provided container ID
+                });
+            }
+        });
+    }
+
+    function changeSymbol(symbol) {
+        document.getElementById("tradingview-chart").innerHTML = "";
+        TradingViewWidget(symbol, "tradingview-chart");
+    }
+
+    // Call changeSymbol() with the appropriate stock symbol when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of following the link
+            const symbol = this.getAttribute('data-symbol');
+            changeSymbol(symbol);
+        });
+    });
+</script>
+</body>
+
+</html>
