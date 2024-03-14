@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('' , include('stocks.urls')), # Include the stocks.urls file for the home page
+    path('home/', home, name="home"),
     path('detailed/', detailed, name="detailed"),
 ]
 

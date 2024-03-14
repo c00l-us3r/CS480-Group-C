@@ -19,26 +19,38 @@
       <div class="container-fluid d-flex justify-content-between align-items-center">
         <!-- Left-aligned link -->
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="font-size: x-large;"><i class="bi bi-house-fill"></i></a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="font-size: x-large;"><i
+              class="bi bi-house-fill"></i></a>
         </div>
-        
+
         <!-- Center-aligned links -->
         <div class="navbar-nav mx-auto">
-          <a class="nav-link active" aria-current="page" href="{% url 'EXXON' %}" data-symbol="XOM" style="font-size: large;">XOM</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'CHEVRON' %}" data-symbol="CVX" style="font-size: large;">CVX</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'NVIDIA' %}" data-symbol="NVDA" style="font-size: large;">NVDA</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'WALMART' %}" data-symbol="WMT" style="font-size: large;">WMT</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'COCACOLA' %}" data-symbol="KO" style="font-size: large;">KO</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'PFIZER' %}" data-symbol="PFE" style="font-size: large;">PFE</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'VERIZON' %}" data-symbol="VZ" style="font-size: large;">VZ</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'HOMEDEPOT' %}" data-symbol="HD" style="font-size: large;">HD</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'ZILLOW' %}" data-symbol="ZG" style="font-size: large;">ZG</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'META' %}" data-symbol="META" style="font-size: large;">META</a>
-          <a class="nav-link active" aria-current="page" href="{% url 'GOOGLE' %}" data-symbol="GOOGL" style="font-size: large;">GOOGL</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'EXXON' %}" data-symbol="XOM"
+            style="font-size: large;">XOM</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'CHEVRON' %}" data-symbol="CVX"
+            style="font-size: large;">CVX</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'NVIDIA' %}" data-symbol="NVDA"
+            style="font-size: large;">NVDA</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'WALMART' %}" data-symbol="WMT"
+            style="font-size: large;">WMT</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'COCACOLA' %}" data-symbol="KO"
+            style="font-size: large;">KO</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'PFIZER' %}" data-symbol="PFE"
+            style="font-size: large;">PFE</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'VERIZON' %}" data-symbol="VZ"
+            style="font-size: large;">VZ</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'HOMEDEPOT' %}" data-symbol="HD"
+            style="font-size: large;">HD</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'ZILLOW' %}" data-symbol="ZG"
+            style="font-size: large;">ZG</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'META' %}" data-symbol="META"
+            style="font-size: large;">META</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'GOOGLE' %}" data-symbol="GOOGL"
+            style="font-size: large;">GOOGL</a>
         </div>
       </div>
     </nav>
-    
+
 
     <!-- Main content area -->
 
@@ -47,10 +59,10 @@
       <div class="row">
 
         <!-- Column contained Chart, 52 Week Section, and Capitilization Section -->
-        <div class="col-lg-8">
+        <div class="col-lg-8  d-flex flex-column">
 
           <!-- Trading View Chart Box -->
-          <div id ="tradingview-chart"
+          <div id="tradingview-chart"
             class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 50vh; border-radius: 10px;">
 
@@ -60,180 +72,178 @@
 
               <script>
                 let tvScriptLoadingPromise;
-            
+
                 function TradingViewWidget(chartSymbol, containerId) {
-                    if (!tvScriptLoadingPromise) {
-                        tvScriptLoadingPromise = new Promise((resolve) => {
-                            const script = document.createElement("script");
-                            script.id = "tradingview-widget-loading-script";
-                            script.src = "https://s3.tradingview.com/tv.js";
-                            script.type = "text/javascript";
-                            script.onload = resolve;
-            
-                            document.head.appendChild(script);
-                        });
-                    }
-            
-                    tvScriptLoadingPromise.then(() => {
-                        if (document.getElementById(containerId) && window.TradingView) {
-                            new window.TradingView.widget({
-                                "autosize": true,
-                                "symbol": chartSymbol, // Initial symbol value
-                                "interval": "D",
-                                "timezone": "Etc/UTC",
-                                "theme": "light",
-                                "style": "1",
-                                "locale": "en",
-                                "enable_publishing": false,
-                                "hide_top_toolbar": true,
-                                "withdateranges": true,
-                                "save_image": false,
-                                "calendar": false,
-                                allow_symbol_change: true,
-                                container_id: containerId // Updated to use the provided container ID
-                            });
-                        }
+                  if (!tvScriptLoadingPromise) {
+                    tvScriptLoadingPromise = new Promise((resolve) => {
+                      const script = document.createElement("script");
+                      script.id = "tradingview-widget-loading-script";
+                      script.src = "https://s3.tradingview.com/tv.js";
+                      script.type = "text/javascript";
+                      script.onload = resolve;
+
+                      document.head.appendChild(script);
                     });
+                  }
+
+                  tvScriptLoadingPromise.then(() => {
+                    if (document.getElementById(containerId) && window.TradingView) {
+                      new window.TradingView.widget({
+                        "autosize": true,
+                        "symbol": chartSymbol, // Initial symbol value
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": true,
+                        "withdateranges": true,
+                        "save_image": false,
+                        "calendar": false,
+                        allow_symbol_change: true,
+                        container_id: containerId // Updated to use the provided container ID
+                      });
+                    }
+                  });
                 }
-            
+
                 function changeSymbol(symbol) {
-                    document.getElementById("tradingview-chart").innerHTML = "";
-                    TradingViewWidget(symbol, "tradingview-chart");
+                  document.getElementById("tradingview-chart").innerHTML = "";
+                  TradingViewWidget(symbol, "tradingview-chart");
                 }
-            
+
                 // Call changeSymbol() with the appropriate stock symbol when a link is clicked
                 document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', function(event) {
-                        //event.preventDefault(); // Prevent the default action of following the link
-                        const symbol = this.getAttribute('data-symbol');
-                        changeSymbol(symbol);
-                    });
+                  link.addEventListener('click', function (event) {
+                    //event.preventDefault(); // Prevent the default action of following the link
+                    const symbol = this.getAttribute('data-symbol');
+                    changeSymbol(symbol);
+                  });
                 });
-            
+
                 // Load the chart with a default symbol when the page is initially loaded
-                window.onload = function() {
-                    // Choose a default symbol here (e.g., "AAPL" for Apple)
-                    defaultSymbol = "SPY";
-                    changeSymbol(defaultSymbol);
+                window.onload = function () {
+                  // Choose a default symbol here (e.g., "AAPL" for Apple)
+                  defaultSymbol = "SPY";
+                  changeSymbol(defaultSymbol);
                 };
-            </script>
+              </script>
             </div>
             <!-- TradingView Widget END -->
           </div>
 
-          <!-- 52 Week High to Latest Quarter Section -->
-          <div
-            class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-90 shadow"
+          <!-- Table -->
+          <div class="container-fluid bg-white p-3 mb-3 justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: auto; border-radius: 10px;">
             <div class="row">
-              <div class="table-responsive">
-                <!-- Stock information table formatting subject to change-->
-                <table class=" table table-bordered table-striped table-hover bg-light">
-                  <thead>
-                    <tr>
-                      <th scope="col-lg-2"> </th>
-                      <th scope="col-lg-2"> High </th>
-                      <th scope="col-lg-2"> Low </th>
-                      <th scope="col-lg-2"> Open </th>
-                      <th scope="col-lg-2"> Close </th>
-                      <th scope="col-lg-2"> Volume </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!--Format rows.-->
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">XOM</a></th>
-                      {% for pd in filteredPD %}
-                      <td>{{ pd.high }}</td>
-                      <td>{{ pd.low }}</td>
-                      <td>{{ pd.open }}</td>
-                      <td>{{ pd.close }}</td>
-                      <td>{{ pd.volume }}</td>
-                      {% endfor %}
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">CVX</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">NVDA</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">WMT</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">KO</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">PFE</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">VZ</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">HD</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">ZG</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">META</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><a class="nav-link active" aria-current="page" href="{% url 'detailed' %}">GOOGL</a></th>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                      <td>$$$</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="row mb-2">
+              <div class="col"></div>
+              <div class="col" style="font-weight: bold;">High</div>
+              <div class="col" style="font-weight: bold;">Low</div>
+              <div class="col" style="font-weight: bold;">Open</div>
+              <div class="col" style="font-weight: bold;">Close</div>
+              <div class="col" style="font-weight: bold;">Volume</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredXOM %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredXOM %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredXOM %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredXOM %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredXOM %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredXOM %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredCVX %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredCVX %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredCVX %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredCVX %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredCVX %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredCVX %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredNVDA %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredNVDA %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredNVDA %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredNVDA %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredNVDA %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredNVDA %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredWMT %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredWMT %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredWMT %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredWMT %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredWMT %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredWMT %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredKO %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredKO %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredKO %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredKO %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredKO %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredKO %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredPFE %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredPFE %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredPFE %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredPFE %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredPFE %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredPFE %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredVZ %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredVZ %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredVZ %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredVZ %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredVZ %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredVZ %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredHD %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredHD %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredHD %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredHD %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredHD %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredHD %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredZG %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredZG %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredZG %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredZG %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredZG %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredZG %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredMETA %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredMETA %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredMETA %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredMETA %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredMETA %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredMETA %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
+            <hr class="mb-3">
+            <div class="row mb-2">
+              <div class="col" style="font-weight: bold;"> {% for data in filteredGOOGL %} {{ data.symbol }} {% endfor %}</div>
+              <div class="col">{% for data in filteredGOOGL %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredGOOGL %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredGOOGL %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredGOOGL %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredGOOGL %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+            </div>
             </div>
           </div>
 

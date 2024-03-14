@@ -92,7 +92,7 @@
                     if (document.getElementById(containerId) && window.TradingView) {
                       new window.TradingView.widget({
                         "autosize": true,
-                        "symbol": chartSymbol, // Initial symbol value
+                        "symbol": '{{ context.symbol }}', // Initial symbol value
                         "interval": "D",
                         "timezone": "Etc/UTC",
                         "theme": "light",
@@ -127,7 +127,7 @@
                 // Load the chart with a default symbol when the page is initially loaded
                 window.onload = function () {
                   // Choose a default symbol here (e.g., "AAPL" for Apple)
-                  defaultSymbol = chartSymbol;
+                  defaultSymbol = '{{ context.symbol }}';
                   changeSymbol(defaultSymbol);
                 };
               </script>
