@@ -68,13 +68,14 @@
             class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 50vh; border-radius: 10px;">
 
-            <!-- TradingView Widget BEGIN -->
+            <!-- TradingView Widget Chart BEGIN -->
             <div class="tradingview-widget-container" style="height:100%;width:100%">
               <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
 
               <script>
                 let tvScriptLoadingPromise;
 
+                // Function to create the TradingView widget
                 function TradingViewWidget(chartSymbol, containerId) {
                   if (!tvScriptLoadingPromise) {
                     tvScriptLoadingPromise = new Promise((resolve) => {
@@ -88,6 +89,7 @@
                     });
                   }
 
+                  // Wait for the Trading View script to be loaded before creating the widget
                   tvScriptLoadingPromise.then(() => {
                     if (document.getElementById(containerId) && window.TradingView) {
                       new window.TradingView.widget({
@@ -110,6 +112,7 @@
                   });
                 }
 
+                // Function to change the symbol on the chart
                 function changeSymbol(symbol) {
                   document.getElementById("tradingview-chart").innerHTML = "";
                   TradingViewWidget(symbol, "tradingview-chart");
@@ -118,7 +121,6 @@
                 // Call changeSymbol() with the appropriate stock symbol when a link is clicked
                 document.querySelectorAll('.nav-link').forEach(link => {
                   link.addEventListener('click', function (event) {
-                    //event.preventDefault(); // Prevent the default action of following the link
                     const symbol = this.getAttribute('data-symbol');
                     changeSymbol(symbol);
                   });
@@ -126,13 +128,13 @@
 
                 // Load the chart with a default symbol when the page is initially loaded
                 window.onload = function () {
-                  // Choose a default symbol here (e.g., "AAPL" for Apple)
+                  // Set the default symbol to be the symbol of the first link in the navbar
                   defaultSymbol = '{{ context.symbol }}';
                   changeSymbol(defaultSymbol);
                 };
               </script>
             </div>
-            <!-- TradingView Widget END -->
+            <!-- TradingView Widget Chart END -->
           </div>
 
           <!-- 52 Week High to Latest Quarter Section -->

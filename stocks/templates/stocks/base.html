@@ -14,7 +14,7 @@
 
 <body class=" bg-light bg-gradient">
   <container>
-    <!-- Bootstrap navbar Just has placeholder companies at this time-->
+    <!-- Bootstrap navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
       <div class="container-fluid d-flex justify-content-between align-items-center">
         <!-- Left-aligned link -->
@@ -66,13 +66,14 @@
             class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 50vh; border-radius: 10px;">
 
-            <!-- TradingView Widget BEGIN -->
+            <!-- TradingView Widget Chart BEGIN -->
             <div class="tradingview-widget-container" style="height:100%;width:100%">
               <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
 
               <script>
                 let tvScriptLoadingPromise;
 
+                // Function to create the TradingView widget
                 function TradingViewWidget(chartSymbol, containerId) {
                   if (!tvScriptLoadingPromise) {
                     tvScriptLoadingPromise = new Promise((resolve) => {
@@ -86,6 +87,7 @@
                     });
                   }
 
+                  // Wait for the Trading View script to be loaded before creating the widget
                   tvScriptLoadingPromise.then(() => {
                     if (document.getElementById(containerId) && window.TradingView) {
                       new window.TradingView.widget({
@@ -101,13 +103,15 @@
                         "withdateranges": true,
                         "save_image": false,
                         "calendar": false,
-                        allow_symbol_change: true,
+                        allow_symbol_change: false,
                         container_id: containerId // Updated to use the provided container ID
                       });
                     }
                   });
                 }
 
+
+                // Function to change the symbol in the TradingView chart
                 function changeSymbol(symbol) {
                   document.getElementById("tradingview-chart").innerHTML = "";
                   TradingViewWidget(symbol, "tradingview-chart");
@@ -116,26 +120,26 @@
                 // Call changeSymbol() with the appropriate stock symbol when a link is clicked
                 document.querySelectorAll('.nav-link').forEach(link => {
                   link.addEventListener('click', function (event) {
-                    //event.preventDefault(); // Prevent the default action of following the link
                     const symbol = this.getAttribute('data-symbol');
                     changeSymbol(symbol);
                   });
                 });
 
-                // Load the chart with a default symbol when the page is initially loaded
+                // Load the chart with a default symbol when the page is initially loaded (this is meant for the home page)
                 window.onload = function () {
-                  // Choose a default symbol here (e.g., "AAPL" for Apple)
+                  // Choose a default symbol here (e.g., "SPY" for the S&P 500 ETF,)
                   defaultSymbol = "SPY";
                   changeSymbol(defaultSymbol);
                 };
               </script>
             </div>
-            <!-- TradingView Widget END -->
+            <!-- TradingView Widget Chart END -->
           </div>
 
           <!-- Table -->
           <div class="container-fluid bg-white p-3 mb-3 justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: auto; border-radius: 10px;">
+            <!-- This is where the data will be displayed -->
             <div class="row">
             <div class="row mb-2">
               <div class="col"></div>
@@ -255,11 +259,11 @@
             class="container-fluid bg-white p-3 mb-3 d-flex flex-column justify-content-between align-items-stretch bg-opacity-90 shadow"
             style="height: 100%; border-radius: 10px;">
 
-            <!-- TradingView Widget BEGIN -->
+            <!-- TradingView Widget News BEGIN -->
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow"
-                  target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                  target="_blank"></a></div>
               <script type="text/javascript"
                 src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
                 {
@@ -272,7 +276,7 @@
                   "locale": "en"
                 }
               </script>
-            </div> <!-- TradingView Widget END -->
+            </div> <!-- TradingView Widget News END -->
 
           </div>
         </div>
