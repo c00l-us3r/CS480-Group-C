@@ -24,7 +24,6 @@ from datetime import datetime
 def updateDB(symbol, apikey):
     #pull data
     FFDtokens = getFFD(symbol, apikey)
-    print(FFDtokens)
     PDtokens = getPD(symbol, apikey)
     currDay = today.today()
     currTime = datetime.now()
@@ -34,9 +33,10 @@ def updateDB(symbol, apikey):
     lp = LP(date=currDay, time=timeFormat)
     lp.save()
 
-    """ #store FFD
+    #store FFD
     if FFD.objects.filter(symbol=FFDtokens[0]).exists:
-           assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
+        FFD.objects.filter(symbol=FFDtokens[0]).update(
+            assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
             exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
             address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
             peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], divdendyield=FFDtokens[19],
@@ -48,8 +48,8 @@ def updateDB(symbol, apikey):
             number_52weeklow=FFDtokens[45], number_50daymovingaverage=FFDtokens[46], number_200daymovingaverage=FFDtokens[47], sharesoutstanding=FFDtokens[48], dividenddate=FFDtokens[49],
             exdividenddate=FFDtokens[50]
         )
-    else: """
-    ffd = FFD(symbol=FFDtokens[0], assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
+    else:
+        ffd = FFD(symbol=FFDtokens[0], assettype=FFDtokens[1], name=FFDtokens[2], desc=FFDtokens[3], cik=FFDtokens[4],
                 exchange=FFDtokens[5], currency=FFDtokens[6], country=FFDtokens[7], sector=FFDtokens[8], industry=FFDtokens[9],
                 address=FFDtokens[10], fiscalyearend=FFDtokens[11], latestquarter=FFDtokens[12], marketcapitalization=FFDtokens[13], ebitda=FFDtokens[14],
                 peration=FFDtokens[15], pegration=FFDtokens[16], bookvalue=FFDtokens[17], dividendpershare=FFDtokens[18], divdendyield=FFDtokens[19],
@@ -60,16 +60,16 @@ def updateDB(symbol, apikey):
                 pricetobookratio=FFDtokens[40], evtorevenue=FFDtokens[41], evtoebitda=FFDtokens[42], beta=FFDtokens[43], number_52weekhigh=FFDtokens[44],
                 number_52weeklow=FFDtokens[45], number_50daymovingaverage=FFDtokens[46], number_200daymovingaverage=FFDtokens[47], sharesoutstanding=FFDtokens[48], dividenddate=FFDtokens[49],
                 exdividenddate=FFDtokens[50])
-    ffd.save()
+        ffd.save()
 
     #store PD
-    """ if PD.objects.filter(symbol=FFDtokens[0]).exists:
+    if PD.objects.filter(symbol=FFDtokens[0]).exists:
         PD.objects.filter(symbol=FFDtokens[0]).update(
             open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4]
         )
-    else: """
-    pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
-    pd.save()
+    else:
+        pd = PD(symbol=FFDtokens[0], open=PDtokens[0], high=PDtokens[1], low=PDtokens[2], close=PDtokens[3], volume=PDtokens[4])
+        pd.save()
 
 #return a list of strings from the databse for FFD
 #Here are the indexes:
