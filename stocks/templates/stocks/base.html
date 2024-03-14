@@ -156,7 +156,7 @@
               <div class="col">{% for data in filteredXOM %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredXOM %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredXOM %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredXOM %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredXOM %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -165,7 +165,7 @@
               <div class="col">{% for data in filteredCVX %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredCVX %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredCVX %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredCVX %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredCVX %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -174,7 +174,7 @@
               <div class="col">{% for data in filteredNVDA %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredNVDA %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredNVDA %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredNVDA %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredNVDA %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -183,7 +183,7 @@
               <div class="col">{% for data in filteredWMT %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredWMT %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredWMT %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredWMT %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredWMT %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -192,7 +192,7 @@
               <div class="col">{% for data in filteredKO %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredKO %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredKO %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredKO %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredKO %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -201,7 +201,7 @@
               <div class="col">{% for data in filteredPFE %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredPFE %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredPFE %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredPFE %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredPFE %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -210,7 +210,7 @@
               <div class="col">{% for data in filteredVZ %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredVZ %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredVZ %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredVZ %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredVZ %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -219,7 +219,7 @@
               <div class="col">{% for data in filteredHD %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredHD %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredHD %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredHD %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredHD %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -228,7 +228,7 @@
               <div class="col">{% for data in filteredZG %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredZG %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredZG %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredZG %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredZG %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -237,7 +237,7 @@
               <div class="col">{% for data in filteredMETA %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredMETA %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredMETA %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredMETA %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredMETA %} {{ data.volume }} {% endfor %}</div>
             </div>
             <hr class="mb-3">
             <div class="row mb-2">
@@ -246,7 +246,7 @@
               <div class="col">{% for data in filteredGOOGL %} $ {{ data.high|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredGOOGL %} $ {{ data.open|floatformat:2 }} {% endfor %}</div>
               <div class="col">{% for data in filteredGOOGL %} $ {{ data.close|floatformat:2 }} {% endfor %}</div>
-              <div class="col">{% for data in filteredGOOGL %} {{ data.volume|floatformat:2 }} {% endfor %}</div>
+              <div class="col">{% for data in filteredGOOGL %} {{ data.volume }} {% endfor %}</div>
             </div>
             </div>
           </div>
