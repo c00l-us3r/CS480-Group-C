@@ -74,63 +74,56 @@
 
               <script>
                 let tvScriptLoadingPromise;
-
+            
                 function TradingViewWidget(chartSymbol, containerId) {
-                  if (!tvScriptLoadingPromise) {
-                    tvScriptLoadingPromise = new Promise((resolve) => {
-                      const script = document.createElement("script");
-                      script.id = "tradingview-widget-loading-script";
-                      script.src = "https://s3.tradingview.com/tv.js";
-                      script.type = "text/javascript";
-                      script.onload = resolve;
-
-                      document.head.appendChild(script);
-                    });
-                  }
-
-                  tvScriptLoadingPromise.then(() => {
-                    if (document.getElementById(containerId) && window.TradingView) {
-                      new window.TradingView.widget({
-                        "autosize": true,
-                        "symbol": chartSymbol, // Initial symbol value
-                        "interval": "D",
-                        "timezone": "Etc/UTC",
-                        "theme": "light",
-                        "style": "1",
-                        "locale": "en",
-                        "enable_publishing": false,
-                        "hide_top_toolbar": true,
-                        "withdateranges": true,
-                        "save_image": false,
-                        "calendar": false,
-                        allow_symbol_change: true,
-                        container_id: containerId // Updated to use the provided container ID
-                      });
+                    if (!tvScriptLoadingPromise) {
+                        tvScriptLoadingPromise = new Promise((resolve) => {
+                            const script = document.createElement("script");
+                            script.id = "tradingview-widget-loading-script";
+                            script.src = "https://s3.tradingview.com/tv.js";
+                            script.type = "text/javascript";
+                            script.onload = resolve;
+            
+                            document.head.appendChild(script);
+                        });
                     }
-                  });
+            
+                    tvScriptLoadingPromise.then(() => {
+                        if (document.getElementById(containerId) && window.TradingView) {
+                            new window.TradingView.widget({
+                                "autosize": true,
+                                "symbol": chartSymbol, // Initial symbol value
+                                "interval": "D",
+                                "timezone": "Etc/UTC",
+                                "theme": "light",
+                                "style": "1",
+                                "locale": "en",
+                                "enable_publishing": false,
+                                "hide_top_toolbar": true,
+                                "withdateranges": true,
+                                "save_image": false,
+                                "calendar": false,
+                                allow_symbol_change: true,
+                                container_id: containerId // Updated to use the provided container ID
+                            });
+                        }
+                    });
                 }
-
+            
                 function changeSymbol(symbol) {
-                  document.getElementById("tradingview-chart").innerHTML = "";
-                  TradingViewWidget(symbol, "tradingview-chart");
+                    document.getElementById("tradingview-chart").innerHTML = "";
+                    TradingViewWidget(symbol, "tradingview-chart");
                 }
-
-                // Call changeSymbol() with the appropriate stock symbol when a link is clicked
+            
+                // Load the chart with the symbol clicked
                 document.querySelectorAll('.nav-link').forEach(link => {
-                  link.addEventListener('click', function (event) {
-                    //event.preventDefault(); // Prevent the default action of following the link
-                    const symbol = this.getAttribute('data-symbol');
-                    changeSymbol(symbol);
-                  });
+                    link.addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default action of following the link
+                        const symbol = this.getAttribute('data-symbol');
+                        changeSymbol(symbol);
+                    });
                 });
-
-                // Load the chart with a default symbol when the page is initially loaded
-                window.onload = function () {
-                  // Choose a default symbol here (e.g., "AAPL" for Apple)
-                  defaultSymbol = chartSymbol;
-                  changeSymbol(defaultSymbol);
-                };
-              </script>
+            </script>
             </div>
             <!-- TradingView Widget END -->
           </div>

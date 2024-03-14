@@ -7,7 +7,7 @@ settings.configure(DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'stock_data',   #name of the database
         'USER': 'root',         #change to your username
-        'PASSWORD': 'password',     #change to your password
+        'PASSWORD': '1234',     #change to your password
         'HOST': 'localhost',    #change to your host
         'PORT': '3306',         #change to your port
     }
