@@ -23,25 +23,36 @@
             <i class="bi bi-house-fill"></i>
           </a>
         </div>
-    
+
         <!-- Center-aligned links -->
         <div class="navbar-nav mx-auto">
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="XOM" style="font-size: large;">XOM</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="CVX" style="font-size: large;">CVX</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="NVDA" style="font-size: large;">NVDA</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="WMT" style="font-size: large;">WMT</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="KO" style="font-size: large;">KO</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="PFE" style="font-size: large;">PFE</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="VZ" style="font-size: large;">VZ</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="HD" style="font-size: large;">HD</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="ZG" style="font-size: large;">ZG</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="META" style="font-size: large;">META</a>
-          <a class="nav-link active" aria-current="page" href="#" data-symbol="GOOGL" style="font-size: large;">GOOGL</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'EXXON' %}" data-symbol="XOM"
+            style="font-size: large;">XOM</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'CHEVRON' %}" data-symbol="CVX"
+            style="font-size: large;">CVX</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'NVIDIA' %}" data-symbol="NVDA"
+            style="font-size: large;">NVDA</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'WALMART' %}" data-symbol="WMT"
+            style="font-size: large;">WMT</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'COCACOLA' %}" data-symbol="KO"
+            style="font-size: large;">KO</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'PFIZER' %}" data-symbol="PFE"
+            style="font-size: large;">PFE</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'VERIZON' %}" data-symbol="VZ"
+            style="font-size: large;">VZ</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'HOMEDEPOT' %}" data-symbol="HD"
+            style="font-size: large;">HD</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'ZILLOW' %}" data-symbol="ZG"
+            style="font-size: large;">ZG</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'META' %}" data-symbol="META"
+            style="font-size: large;">META</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'GOOGLE' %}" data-symbol="GOOGL"
+            style="font-size: large;">GOOGL</a>
         </div>
       </div>
     </nav>
-    
-    
+
+
 
     <!-- Main content area -->
 
@@ -53,7 +64,7 @@
         <div class="col-lg-8">
 
           <!-- Trading View Chart Box -->
-          <div id ="tradingview-chart"
+          <div id="tradingview-chart"
             class="container-fluid bg-white p-3 mb-3 d-flex justify-content-center align-items-center bg-opacity-50 shadow"
             style="height: 50vh; border-radius: 10px;">
 
@@ -63,63 +74,63 @@
 
               <script>
                 let tvScriptLoadingPromise;
-            
+
                 function TradingViewWidget(chartSymbol, containerId) {
-                    if (!tvScriptLoadingPromise) {
-                        tvScriptLoadingPromise = new Promise((resolve) => {
-                            const script = document.createElement("script");
-                            script.id = "tradingview-widget-loading-script";
-                            script.src = "https://s3.tradingview.com/tv.js";
-                            script.type = "text/javascript";
-                            script.onload = resolve;
-            
-                            document.head.appendChild(script);
-                        });
-                    }
-            
-                    tvScriptLoadingPromise.then(() => {
-                        if (document.getElementById(containerId) && window.TradingView) {
-                            new window.TradingView.widget({
-                                "autosize": true,
-                                "symbol": chartSymbol, // Initial symbol value
-                                "interval": "D",
-                                "timezone": "Etc/UTC",
-                                "theme": "light",
-                                "style": "1",
-                                "locale": "en",
-                                "enable_publishing": false,
-                                "hide_top_toolbar": true,
-                                "withdateranges": true,
-                                "save_image": false,
-                                "calendar": false,
-                                allow_symbol_change: true,
-                                container_id: containerId // Updated to use the provided container ID
-                            });
-                        }
+                  if (!tvScriptLoadingPromise) {
+                    tvScriptLoadingPromise = new Promise((resolve) => {
+                      const script = document.createElement("script");
+                      script.id = "tradingview-widget-loading-script";
+                      script.src = "https://s3.tradingview.com/tv.js";
+                      script.type = "text/javascript";
+                      script.onload = resolve;
+
+                      document.head.appendChild(script);
                     });
+                  }
+
+                  tvScriptLoadingPromise.then(() => {
+                    if (document.getElementById(containerId) && window.TradingView) {
+                      new window.TradingView.widget({
+                        "autosize": true,
+                        "symbol": chartSymbol, // Initial symbol value
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": true,
+                        "withdateranges": true,
+                        "save_image": false,
+                        "calendar": false,
+                        allow_symbol_change: true,
+                        container_id: containerId // Updated to use the provided container ID
+                      });
+                    }
+                  });
                 }
-            
+
                 function changeSymbol(symbol) {
-                    document.getElementById("tradingview-chart").innerHTML = "";
-                    TradingViewWidget(symbol, "tradingview-chart");
+                  document.getElementById("tradingview-chart").innerHTML = "";
+                  TradingViewWidget(symbol, "tradingview-chart");
                 }
-            
+
                 // Call changeSymbol() with the appropriate stock symbol when a link is clicked
                 document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', function(event) {
-                        //event.preventDefault(); // Prevent the default action of following the link
-                        const symbol = this.getAttribute('data-symbol');
-                        changeSymbol(symbol);
-                    });
+                  link.addEventListener('click', function (event) {
+                    //event.preventDefault(); // Prevent the default action of following the link
+                    const symbol = this.getAttribute('data-symbol');
+                    changeSymbol(symbol);
+                  });
                 });
-            
+
                 // Load the chart with a default symbol when the page is initially loaded
-                window.onload = function() {
-                    // Choose a default symbol here (e.g., "AAPL" for Apple)
-                    defaultSymbol = chartSymbol;
-                    changeSymbol(defaultSymbol);
+                window.onload = function () {
+                  // Choose a default symbol here (e.g., "AAPL" for Apple)
+                  defaultSymbol = chartSymbol;
+                  changeSymbol(defaultSymbol);
                 };
-            </script>
+              </script>
             </div>
             <!-- TradingView Widget END -->
           </div>
@@ -320,29 +331,37 @@
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Open</span>
-                  <span>$$$$$$$$$$$</span>
-                  
+                  {% for stock in filteredPD %}
+                  <span>{{ stock.open }}</span>
+                  {% endfor %}
+
                 </div>
                 <hr class="my-1">
               </div>
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Close</span>
-                  <span>$32</span>
+                  {% for stock in filteredPD %}
+                  <li>{{ stock.close }}</li>
+                  {% endfor %}
                 </div>
                 <hr class="my-1">
               </div>
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">High</span>
-                  <span>$36</span>
+                  {% for stock in filteredPD %}
+                  <li>{{ stock.high }}</li>
+                  {% endfor %}
                 </div>
                 <hr class="my-1">
               </div>
               <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <span style="font-weight: bold; font-size: larger;">Low</span>
-                  <span>$32</span>
+                  {% for stock in filteredPD %}
+                  <li>{{ stock.low }}</li>
+                  {% endfor %}
                 </div>
                 <hr class="my-1">
               </div>
@@ -356,16 +375,9 @@
 
             <!--About Section-->
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nullam nec vehicula nisi, sed interdum ante. Cras vel justo ut ligula cursus varius. Integer accumsan
-              auctor felis, eget molestie quam efficitur nec.
-              Sed auctor risus sed libero condimentum, sit amet luctus nulla convallis. Sed vitae felis eu metus finibus
-              scelerisque.
-              Nam pretium euismod dolor, id lacinia elit tempus sed. Nulla facilisi.
-              Sed sit amet lacinia ante. Vivamus non condimentum odio. Integer aliquet ex eu arcu ullamcorper, et
-              faucibus mauris malesuada.
-              In hac habitasse platea dictumst. Sed quis nulla ligula.
-              Sed venenatis lorem vitae tempor pulvinar. Sed pretium justo a volutpat bibendum.
+              {% for stock in filteredFFD %}
+              <li>{{ stock.desc }}</li>
+              {% endfor %}
             </p>
 
             <br>

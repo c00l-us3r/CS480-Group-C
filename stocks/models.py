@@ -203,7 +203,7 @@ class LastPull(models.Model):
 
 
 class PricingData(models.Model):
-    symbol = models.CharField(db_column='Symbol', max_length=10)  # Field name made lowercase.
+    symbol = models.CharField(db_column='Symbol', primary_key=True, max_length=10)  # Field name made lowercase.
     open = models.CharField(db_column='Open', max_length=10)  # Field name made lowercase.
     high = models.CharField(db_column='High', max_length=10)  # Field name made lowercase.
     low = models.CharField(db_column='Low', max_length=10)  # Field name made lowercase.
